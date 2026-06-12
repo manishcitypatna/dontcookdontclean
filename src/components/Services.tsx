@@ -11,7 +11,8 @@ export default function Services() {
         "Clothes Washing",
         "Kitchen Maintenance"
       ],
-      bg: "#FFFFFF"
+      bg: "#FFFFFF",
+      icon: "/images/maid_service.png"
     },
     {
       id: 2,
@@ -22,7 +23,8 @@ export default function Services() {
         "Elderly Assistance",
         "Companion Care"
       ],
-      bg: "#FFFFFF"
+      bg: "#FFFFFF",
+      icon: "/images/child_elder_care.png"
     },
     {
       id: 3,
@@ -33,7 +35,8 @@ export default function Services() {
         "Live-In Helpers",
         "Pet Walking"
       ],
-      bg: "#FFFFFF"
+      bg: "#FFFFFF",
+      icon: "/images/specialized_assistance.png"
     }
   ]
 
@@ -52,7 +55,7 @@ export default function Services() {
               style={{ backgroundColor: service.bg }}
             >
               <div className="w-20 h-20 rounded-[24px] bg-[#e8f5d3] flex items-center justify-center mb-6">
-                <span className="text-3xl">🧹</span>
+                <img src={service.icon} alt={service.title} className="w-12 h-12 object-contain" style={{ filter: 'brightness(0) saturate(100%) invert(37%) sepia(95%) saturate(1311%) hue-rotate(90deg) brightness(99%) contrast(101%)' }} />
               </div>
               <h4 className="h4 text-text-primary mb-4">{service.title}</h4>
               <ul className="space-y-2">
