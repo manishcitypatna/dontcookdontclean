@@ -60,7 +60,7 @@ export default function FooterSection() {
               data-tally-form-events-forwarding="1" 
               className="btn-primary mt-8"
             >
-              Want to work with us? Register Here
+              Want to work with us?
             </button>
           </div>
 
