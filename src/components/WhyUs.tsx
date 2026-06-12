@@ -84,7 +84,7 @@ export default function WhyUs() {
                 alt=""
                 width={55}
                 height={55}
-                className="w-[55px] h-auto"
+                className="w-[55px] h-auto w-auto"
               />
             </motion.div>
 
@@ -98,7 +98,7 @@ export default function WhyUs() {
                 alt=""
                 width={95}
                 height={95}
-                className="w-[95px] h-auto"
+                className="w-[95px] h-auto w-auto"
               />
             </motion.div>
 
@@ -112,14 +112,14 @@ export default function WhyUs() {
                 alt=""
                 width={70}
                 height={70}
-                className="w-[70px] h-auto"
+                className="w-[70px] h-auto w-auto"
               />
             </motion.div>
 
             {/* Main Image */}
             <div className="relative w-full h-[420px] md:h-[560px] lg:h-[650px] overflow-hidden rounded-[24px]">
               <Image
-                src="/images/GettyImages-1456829711.jpg"
+                src="/images/why_us.png"
                 alt="Trusted Domestic Helpers"
                 fill
                 className="object-cover"

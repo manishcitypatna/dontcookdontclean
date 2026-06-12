@@ -29,7 +29,7 @@ export default function Hero() {
               width={160}
               height={64}
               priority
-              className="h-auto"
+              className="h-auto w-auto"
             />
           </div>
           

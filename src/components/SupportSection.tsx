@@ -8,7 +8,7 @@ const SupportSection = () => {
         <div className="flex flex-col lg:flex-row bg-white rounded-[24px] shadow-[0_10px_30px_rgba(0,0,0,0.08)] max-w-6xl mx-auto">
           {/* Left Column - Image and Statistics */}
           <div className="lg:w-1/2 relative bg-cover bg-center flex flex-col justify-end p-6 md:p-10 rounded-l-[24px]"
-               style={{ backgroundImage: "url('/images/GettyImages-2166928738-1024x631.jpg')" }}>
+               style={{ backgroundImage: "url('/images/support_banner.png')" }}>
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-50 rounded-l-[24px]"></div>
             <div className="relative z-10 text-white">
               <div className="flex flex-col md:flex-row md:justify-around text-center gap-4 md:gap-0">
@@ -126,7 +126,7 @@ const SupportSection = () => {
               </form>
 
               <div className="mt-8 text-center text-text-secondary small-text">
-                <p>If you have any questions, contact our office at: <span className="font-medium text-text-primary">+1 (180) 567-8990</span></p>
+                <p>If you have any questions, call or Whatsapp at: <span className="font-medium text-text-primary">+91-88771-94682</span></p>
               </div>
             </div>
           </div>

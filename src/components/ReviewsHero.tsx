@@ -11,11 +11,12 @@ export default function ReviewsHero() {
           <div className="relative">
             <div className="overflow-hidden rounded-[24px]">
               <Image
-                src="/images/GettyImages-532846352-1024x631.jpg"
+                src="/images/review_heroNabber.png"
                 alt="Happy Home"
                 width={1024}
                 height={631}
                 className="w-full h-[360px] md:h-[420px] object-cover"
+                loading="eager"
               />
             </div>
 
@@ -29,11 +30,11 @@ export default function ReviewsHero() {
 
               <div className="flex items-center gap-3">
                 <Image
-                  src="/images/matheus-ferrero-pg_WCHWSdT8-unsplash-150x150.jpg"
+                  src="/images/review/review_female_1.png"
                   alt="Customer"
                   width={34}
                   height={34}
-                  className="rounded-full"
+                  className="rounded-full h-auto w-auto"
                 />
 
                 <div>

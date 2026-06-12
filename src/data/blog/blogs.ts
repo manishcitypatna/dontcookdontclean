@@ -31,7 +31,7 @@ export const blogs: BlogPost[] = [
     category: "Home Care",
     title: "A Weekly House Cleaning Checklist for Busy Families",
     slug: "/blog/weekly-house-cleaning-checklist",
-    image: "/images/blog-cleaning-checklist.jpg",
+    image: "/images/GettyImages-1456829711.jpg",
     publishedAt: "2026-06-08",
   },
 
@@ -40,7 +40,7 @@ export const blogs: BlogPost[] = [
     category: "Household Tips",
     title: "5 Ways Professional Domestic Help Can Save You Time",
     slug: "/blog/domestic-help-benefits",
-    image: "/images/blog-domestic-help.jpg",
+    image: "/images/GettyImages-2166928738-1024x631.jpg",
     publishedAt: "2026-06-05",
   },
 
@@ -49,7 +49,7 @@ export const blogs: BlogPost[] = [
     category: "Family Lifestyle",
     title: "Balancing Work and Home Life with Reliable Household Support",
     slug: "/blog/work-life-household-support",
-    image: "/images/blog-family-support.jpg",
+    image: "/images/gettyimages-931846502-2048x2048-2-1024x814.jpg",
     publishedAt: "2026-06-02",
   },
 ];

@@ -39,12 +39,12 @@ export default function FooterSection() {
             <div className="mt-8 space-y-4">
               <div className="flex items-center gap-3 text-text-secondary">
                 <span className="text-lg">📞</span>
-                <span>+91 XXXXX XXXXX</span>
+                <span>+91-88771-94682</span>
               </div>
 
               <div className="flex items-center gap-3 text-text-secondary">
                 <span className="text-lg">📧</span>
-                <span>hello@dontcookdontclean.com</span>
+                <span>dontcookdontcleans@gmail.com</span>
               </div>
             </div>
 

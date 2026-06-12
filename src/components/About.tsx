@@ -61,7 +61,7 @@ export default function About() {
           {/* Image */}
           <div className="rounded-[24px] overflow-hidden">
             <Image
-              src="/images/who_we_are.png"
+              src="/images/who-we-are.png"
               alt="Domestic helper working"
               width={1024}
               height={814}
