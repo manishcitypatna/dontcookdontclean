@@ -21,6 +21,12 @@ const quicksand = Quicksand({
 export const metadata: Metadata = {
   title: "Don't Cook Don't Clean - Trusted Maids & Domestic Helpers",
   description: "Don't Cook Don't Clean connects families with verified domestic helpers for cooking, cleaning, childcare, elder care, and more. Available in Patna with flexible plans.",
+  icons: {
+    icon: [
+      { url: '/fav-icon.png' },
+      { url: '/fav-icon-150x150.png', sizes: '150x150', type: 'image/png' },
+    ],
+  },
 };
 
 export default function RootLayout({
