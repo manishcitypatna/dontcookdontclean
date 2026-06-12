@@ -7,22 +7,22 @@ const SupportSection = () => {
       <div className="relative z-10 container">
         <div className="flex flex-col lg:flex-row bg-white rounded-[24px] shadow-[0_10px_30px_rgba(0,0,0,0.08)] max-w-6xl mx-auto">
           {/* Left Column - Image and Statistics */}
-          <div className="lg:w-1/2 relative bg-cover bg-center flex flex-col justify-end p-10 rounded-l-[24px]"
+          <div className="lg:w-1/2 relative bg-cover bg-center flex flex-col justify-end p-6 md:p-10 rounded-l-[24px]"
                style={{ backgroundImage: "url('/images/GettyImages-2166928738-1024x631.jpg')" }}>
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-50 rounded-l-[24px]"></div>
-            <div className="relative z-10 text-white p-8">
-              <div className="flex justify-around text-center mt-4">
-                <div className="flex flex-col items-center">
-                  <span className="text-4xl font-bold">98%</span>
-                  <span className="small-text">Customer Satisfaction</span>
+            <div className="relative z-10 text-white">
+              <div className="flex flex-col md:flex-row md:justify-around text-center gap-4 md:gap-0">
+                <div className="flex flex-col items-center p-4">
+                  <span className="text-3xl md:text-4xl font-bold">98%</span>
+                  <span className="text-xs md:small-text mt-1 leading-tight text-center">Customer Satisfaction</span>
                 </div>
-                <div className="flex flex-col items-center">
-                  <span className="text-4xl font-bold">5+</span>
-                  <span className="small-text">Service Categories</span>
+                <div className="flex flex-col items-center p-4">
+                  <span className="text-3xl md:text-4xl font-bold">5+</span>
+                  <span className="text-xs md:small-text mt-1 leading-tight text-center">Service Categories</span>
                 </div>
-                <div className="flex flex-col items-center">
-                  <span className="text-4xl font-bold">24/7</span>
-                  <span className="small-text">Customer Support</span>
+                <div className="flex flex-col items-center p-4">
+                  <span className="text-3xl md:text-4xl font-bold">24/7</span>
+                  <span className="text-xs md:small-text mt-1 leading-tight text-center">Customer Support</span>
                 </div>
               </div>
             </div>
