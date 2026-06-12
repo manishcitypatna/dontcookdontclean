@@ -1,0 +1,132 @@
+"use client";
+import { useState } from "react";
+
+export default function LeadForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    serviceRequired: "",
+    shiftPreference: "",
+    email: "",
+    phone: "",
+    engagementDuration: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    alert("Thank you for your inquiry! We will contact you soon.");
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="w-full">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        {/* Name */}
+        <div className="md:col-span-1">
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter your name"
+            required
+            value={formData.name}
+            onChange={handleChange}
+            className="form-input"
+          />
+        </div>
+
+        {/* Service Required */}
+        <div className="md:col-span-1">
+          <select
+            name="serviceRequired"
+            value={formData.serviceRequired}
+            onChange={handleChange}
+            className="form-input"
+          >
+            <option value="">Select Service...</option>
+            <option value="cooking-only">Cooking Only</option>
+            <option value="house-cleaning-only">House Cleaning Only</option>
+            <option value="laundry-utensil-only">Laundry and Utensil Washing Only</option>
+            <option value="child-care-nanny">Child Care and Nanny Services</option>
+            <option value="elder-care-patient">Elderly Care and Patient Assistance</option>
+            <option value="cooking-cleaning-combined">Cooking and House Cleaning Combined</option>
+            <option value="full-housekeeper">Full Housekeeper (Cooking, Cleaning, and Laundry)</option>
+          </select>
+        </div>
+
+        {/* Shift Preference */}
+        <div className="md:col-span-1">
+          <select
+            name="shiftPreference"
+            value={formData.shiftPreference}
+            onChange={handleChange}
+            className="form-input"
+          >
+            <option value="">Select Shift Type...</option>
+            <option value="part-time">Part-Time (1 to 2 Hours Daily)</option>
+            <option value="half-day">Half-Day (4 to 5 Hours Daily)</option>
+            <option value="full-time-day">Full-Time Day Shift (8 to 10 Hours Daily)</option>
+            <option value="live-in">24-Hour Live-In Management</option>
+          </select>
+        </div>
+
+        {/* Email */}
+        <div className="md:col-span-1">
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            required
+            value={formData.email}
+            onChange={handleChange}
+            className="form-input"
+          />
+        </div>
+
+        {/* Phone */}
+        <div className="md:col-span-1">
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Phone"
+            required
+            value={formData.phone}
+            onChange={handleChange}
+            className="form-input"
+          />
+        </div>
+
+        {/* Engagement Duration */}
+        <div className="md:col-span-1">
+          <select
+            name="engagementDuration"
+            value={formData.engagementDuration}
+            onChange={handleChange}
+            className="form-input"
+          >
+            <option value="">Select Duration...</option>
+            <option value="regular-contract">Regular Contract (Monthly / Permanent Basis)</option>
+            <option value="single-day-trial">Single-Day Trial Booking</option>
+            <option value="short-term-cover">Short-Term Cover (1 to 2 Weeks)</option>
+            <option value="event-house-party">Event and House Party Support (1 to 2 Days)</option>
+            <option value="festival-management">Festival Management Assistance</option>
+            <option value="wedding-function">Wedding and Function Management Support</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Submit Button */}
+      <div className="w-full">
+        <button
+          type="submit"
+          className="btn-secondary w-full"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  );
+}
