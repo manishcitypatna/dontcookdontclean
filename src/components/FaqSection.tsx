@@ -39,6 +39,8 @@ export default function FaqSection() {
       >
         <button
           onClick={() => toggleFaq(id)}
+          aria-expanded={isOpen}
+          aria-controls={`faq-answer-${id}`}
           className="
             w-full
             flex
@@ -82,7 +84,7 @@ export default function FaqSection() {
             }
           `}
         >
-          <div className="overflow-hidden">
+          <div className="overflow-hidden" id={`faq-answer-${id}`}>
             <div className="px-6 md:px-8 pb-6 text-text-secondary leading-relaxed">
               {answer}
             </div>

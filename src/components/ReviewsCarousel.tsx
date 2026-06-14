@@ -41,11 +41,11 @@ export default function ReviewsCarousel() {
             </div>
 
             <h4 className="h4 text-white mb-2">
-              Exceptional 4.8 Rating
+              4.8 Rating
             </h4>
 
             <p className="small-text text-white/80">
-              Rating score: 5 of 5, based on 480 reviews
+              Based on verified customer reviews
             </p>
           </div>
         </div>
@@ -91,7 +91,7 @@ export default function ReviewsCarousel() {
 
                     <div>
                       <h4 className="h4 text-text-primary leading-none">
-                        {review.name}
+                        {review.name}, {review.location}
                       </h4>
 
                       <p className="small-text text-text-secondary mt-1">
@@ -100,11 +100,11 @@ export default function ReviewsCarousel() {
 
                       <div className="flex items-center gap-2 mt-2">
                         <span className="text-secondary text-[16px]">
-                          {"★".repeat(review.rating)}
+                          {"★".repeat(Math.floor(review.rating))}
                         </span>
 
                         <span className="small-text text-text-secondary">
-                          {review.rating}.0
+                          {review.rating}
                         </span>
                       </div>
                     </div>
@@ -127,6 +127,7 @@ export default function ReviewsCarousel() {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
+                aria-label={`Go to review ${index + 1}`}
                 className={`transition-all rounded-full ${
                   currentIndex === index
                     ? "w-8 h-2 bg-primary"

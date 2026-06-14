@@ -40,7 +40,7 @@ export const blogs: BlogPost[] = [
     category: "Household Tips",
     title: "5 Ways Professional Domestic Help Can Save You Time",
     slug: "/blog/domestic-help-benefits",
-    image: "/images/GettyImages-2166928738-1024x631.jpg",
+    image: "/images/GettyImages-532846352-1024x631.jpg",
     publishedAt: "2026-06-05",
   },
 

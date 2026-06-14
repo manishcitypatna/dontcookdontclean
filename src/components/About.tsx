@@ -28,7 +28,7 @@ export default function About() {
               Bringing Reliable Domestic Help to Every Home
             </h2>
             <p className="body text-text-secondary">
-              At Don't Cook Don't Clean, we connect families with trusted household helpers who make everyday life easier. From cooking meals and cleaning your home to caring for children, seniors, and pets, our mission is to provide dependable support that gives you more time for what matters most.
+              At Don&apos;t Cook Don&apos;t Clean, we connect families with trusted household helpers who make everyday life easier. From cooking meals and cleaning your home to caring for children, seniors, and pets, our mission is to provide dependable support that gives you more time for what matters most.
             </p>
 
             {/* Accordion */}
@@ -38,6 +38,7 @@ export default function About() {
                   <button
                     onClick={() => setOpenIndex(openIndex === index ? null : index)}
                     className="w-full flex justify-between items-center p-6 text-left"
+                    aria-expanded={openIndex === index}
                   >
                     <span className="h4 text-text-primary">
                       {item.title}

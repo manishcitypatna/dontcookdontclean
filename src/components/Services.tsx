@@ -1,4 +1,5 @@
 import SectionLabel from "./SectionLabel";
+import Image from "next/image";
 
 export default function Services() {
   const services = [
@@ -55,7 +56,7 @@ export default function Services() {
               style={{ backgroundColor: service.bg }}
             >
               <div className="w-20 h-20 rounded-[24px] bg-[#e8f5d3] flex items-center justify-center mb-6">
-                <img src={service.icon} alt={service.title} className="w-12 h-12 object-contain" style={{ filter: 'brightness(0) saturate(100%) invert(37%) sepia(95%) saturate(1311%) hue-rotate(90deg) brightness(99%) contrast(101%)' }} />
+                <Image src={service.icon} alt={service.title} width={48} height={48} className="w-12 h-12 object-contain" style={{ filter: 'brightness(0) saturate(100%) invert(37%) sepia(95%) saturate(1311%) hue-rotate(90deg) brightness(99%) contrast(101%)' }} />
               </div>
               <h4 className="h4 text-text-primary mb-4">{service.title}</h4>
               <ul className="space-y-2">

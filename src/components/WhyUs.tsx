@@ -29,13 +29,13 @@ export default function WhyUs() {
             <SectionLabel>WHY US</SectionLabel>
 
             <h2 className="h2 text-text-primary mb-8">
-              The Don't Cook Don't
+              The Don&apos;t Cook Don&apos;t
               <br />
               Clean Difference
             </h2>
 
             <p className="body text-text-secondary max-w-[420px] mb-10">
-              Finding trustworthy domestic help shouldn't be stressful. We
+              Finding trustworthy domestic help shouldn&apos;t be stressful. We
               carefully verify helpers, understand your requirements, and
               provide ongoing support throughout your service journey.
             </p>

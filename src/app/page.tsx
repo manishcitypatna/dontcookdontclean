@@ -7,7 +7,7 @@ import Reviews from "@/components/ReviewsHero";
 import ReviewsCarousel from "@/components/ReviewsCarousel";
 import FaqSection from "@/components/FaqSection";
 import SupportSection from "@/components/SupportSection";
-import BlogSection from "@/components/BlogSection";
+
 import Footer from "@/components/Footer";
 
 
@@ -23,7 +23,8 @@ export default function Home() {
       <ReviewsCarousel />
       <SupportSection />
       <FaqSection />
-      <BlogSection />
+      {/* BLOG SECTION — Uncomment when articles are ready */}
+      {/* <BlogSection /> */}
       <Footer />
     </div>
   );

@@ -27,11 +27,14 @@ export default function LeadForm() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
         {/* Name */}
         <div className="md:col-span-1">
+          <label htmlFor="lead-name" className="sr-only">Your Name</label>
           <input
+            id="lead-name"
             type="text"
             name="name"
             placeholder="Enter your name"
             required
+            aria-required="true"
             value={formData.name}
             onChange={handleChange}
             className="form-input"
@@ -40,7 +43,9 @@ export default function LeadForm() {
 
         {/* Service Required */}
         <div className="md:col-span-1">
+          <label htmlFor="lead-service" className="sr-only">Select Service</label>
           <select
+            id="lead-service"
             name="serviceRequired"
             value={formData.serviceRequired}
             onChange={handleChange}
@@ -59,7 +64,9 @@ export default function LeadForm() {
 
         {/* Shift Preference */}
         <div className="md:col-span-1">
+          <label htmlFor="lead-shift" className="sr-only">Select Shift Type</label>
           <select
+            id="lead-shift"
             name="shiftPreference"
             value={formData.shiftPreference}
             onChange={handleChange}
@@ -75,11 +82,14 @@ export default function LeadForm() {
 
         {/* Email */}
         <div className="md:col-span-1">
+          <label htmlFor="lead-email" className="sr-only">Email Address</label>
           <input
+            id="lead-email"
             type="email"
             name="email"
             placeholder="Email Address"
             required
+            aria-required="true"
             value={formData.email}
             onChange={handleChange}
             className="form-input"
@@ -88,11 +98,14 @@ export default function LeadForm() {
 
         {/* Phone */}
         <div className="md:col-span-1">
+          <label htmlFor="lead-phone" className="sr-only">Phone Number</label>
           <input
+            id="lead-phone"
             type="tel"
             name="phone"
             placeholder="Phone"
             required
+            aria-required="true"
             value={formData.phone}
             onChange={handleChange}
             className="form-input"
@@ -101,7 +114,9 @@ export default function LeadForm() {
 
         {/* Engagement Duration */}
         <div className="md:col-span-1">
+          <label htmlFor="lead-duration" className="sr-only">Select Duration</label>
           <select
+            id="lead-duration"
             name="engagementDuration"
             value={formData.engagementDuration}
             onChange={handleChange}

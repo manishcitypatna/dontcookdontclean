@@ -3,7 +3,15 @@
 // src/components/FooterSection.tsx
 import Image from "next/image";
 import Script from "next/script";
-import SectionLabel from "./SectionLabel";
+
+declare global {
+  interface Window {
+    Tally?: {
+      loadEmbeds: () => void;
+    };
+  }
+}
+
 export default function FooterSection() {
   return (
     <footer
@@ -25,13 +33,13 @@ export default function FooterSection() {
               width={220}
               height={80}
               priority
-              className="block mb-8 self-start"
+              className="block mb-8 self-start h-auto w-auto"
             />
 
             {/* Description */}
             <p className="body text-text-secondary max-w-sm">
               <span className="font-semibold text-primary">
-                Don't Cook Don't Clean
+                Don&apos;t Cook Don&apos;t Clean
               </span>{" "}
               helps households find reliable support for cooking,
               cleaning, childcare, elderly care, and everyday household
@@ -47,7 +55,7 @@ export default function FooterSection() {
 
               <div className="flex items-center gap-3 text-text-secondary">
                 <span className="text-lg">📧</span>
-                <span>dontcookdontcleans@gmail.com</span>
+                <a href="mailto:info@dontcookdontclean.in" className="hover:text-primary transition-colors">info@dontcookdontclean.in</a>
               </div>
             </div>
 
@@ -66,9 +74,9 @@ export default function FooterSection() {
 
           {/* Services */}
           <div>
-            <h3 className="small-text uppercase tracking-[0.2em] text-primary font-semibold mb-8" style={{ letterSpacing: '0.2em' }}>
+            <p className="small-text uppercase tracking-[0.2em] text-primary font-semibold mb-8" style={{ letterSpacing: '0.2em' }}>
               SERVICES
-            </h3>
+            </p>
 
             <ul className="space-y-4 text-text-secondary">
               <li>Maid Services</li>
@@ -86,9 +94,9 @@ export default function FooterSection() {
 
           {/* Why Choose Us */}
           <div>
-            <h3 className="small-text uppercase tracking-[0.2em] text-primary font-semibold mb-8" style={{ letterSpacing: '0.2em' }}>
+            <p className="small-text uppercase tracking-[0.2em] text-primary font-semibold mb-8" style={{ letterSpacing: '0.2em' }}>
               WHY FAMILIES CHOOSE US
-            </h3>
+            </p>
 
             <ul className="space-y-4 text-text-secondary">
               <li>ID Verified Staff</li>
@@ -102,34 +110,25 @@ export default function FooterSection() {
 
           {/* Service Areas */}
           <div>
-            <h3 className="small-text uppercase tracking-[0.2em] text-primary font-semibold mb-8" style={{ letterSpacing: '0.2em' }}>
+            <p className="small-text uppercase tracking-[0.2em] text-primary font-semibold mb-8" style={{ letterSpacing: '0.2em' }}>
               SERVICE AREAS
-            </h3>
+            </p>
 
             <div className="space-y-6">
               <div>
-                <p className="text-text-secondary">Patna</p>
+                <span className="text-text-secondary">Patna</span>
               </div>
 
-              <div>
-                <p className="text-text-secondary">Ranchi</p>
-                <p className="small-text text-primary mt-1">
-                  Coming Soon
-                </p>
+              <div aria-hidden="true">
+                <span className="text-text-secondary/40">Ranchi <em>(Coming Soon)</em></span>
               </div>
 
-              <div>
-                <p className="text-text-secondary">Jamshedpur</p>
-                <p className="small-text text-primary mt-1">
-                  Coming Soon
-                </p>
+              <div aria-hidden="true">
+                <span className="text-text-secondary/40">Jamshedpur <em>(Coming Soon)</em></span>
               </div>
 
-              <div>
-                <p className="text-text-secondary">Kolkata</p>
-                <p className="small-text text-primary mt-1">
-                  Coming Soon
-                </p>
+              <div aria-hidden="true">
+                <span className="text-text-secondary/40">Kolkata <em>(Coming Soon)</em></span>
               </div>
             </div>
           </div>
@@ -139,12 +138,11 @@ export default function FooterSection() {
         <div className="border-t border-border mt-16 pt-8">
           <div className="text-center">
             <p className="small-text text-text-secondary">
-              © 2026 Don't Cook Don't Clean. All Rights Reserved.
+              © 2026 Don&apos;t Cook Don&apos;t Clean. All Rights Reserved.
             </p>
 
             <p className="small-text text-text-secondary/60 mt-2">
-              Serving households across Eastern India with trusted
-              domestic help solutions.
+              Serving households in Patna and Bihar with trusted, verified domestic help solutions.
             </p>
           </div>
         </div>
@@ -155,8 +153,8 @@ export default function FooterSection() {
         src="https://tally.so/widgets/embed.js" 
         strategy="afterInteractive" 
         onLoad={() => { 
-          if (typeof window !== 'undefined' && (window as any).Tally) { 
-            (window as any).Tally.loadEmbeds(); 
+          if (typeof window !== 'undefined' && window.Tally) { 
+            window.Tally.loadEmbeds(); 
           } 
         }} 
       />

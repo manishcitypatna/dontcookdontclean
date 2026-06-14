@@ -12,9 +12,12 @@ export default function Hero() {
           muted
           loop
           playsInline
+          poster="/images/hero_poster.jpg"
+          aria-hidden="true"
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
         >
           <source src="/images/hero_Video.mp4" type="video/mp4" />
+          <track kind="captions" srcLang="en" label="English" default />
         </video>
       </div>
 
@@ -35,10 +38,10 @@ export default function Hero() {
           
           <div className="text-center mb-4">
             <h1 className="h1 text-text-primary mb-3">
-              Hire Trusted Maids for Cooking, Cleaning & Household Care
+              Hire Trusted Maids in Patna for Cooking, Cleaning & Household Care
             </h1>
             <p className="body text-text-secondary">
-              Verified domestic helpers for cooking, house cleaning, clothes washing, childcare, elder care, and pet assistance. Available in Patna with flexible part-time and full-time plans.
+              Verified domestic helpers for cooking, house cleaning, clothes washing, childcare, elder care, and pet assistance — available across Patna with flexible part-time, full-time, and live-in plans.
             </p>
           </div>
           <LeadForm />

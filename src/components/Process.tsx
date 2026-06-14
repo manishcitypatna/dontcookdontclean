@@ -1,4 +1,5 @@
 import SectionLabel from "./SectionLabel";
+import Image from "next/image";
 
 export default function Process() {
   const plans = [
@@ -51,8 +52,8 @@ export default function Process() {
         <div className="text-center mb-12">
           <SectionLabel>OUR PROCESS</SectionLabel>
           <h2 className="h2 text-text-primary">
-            What to Expect From Don't Cook Don't Clean
-          </h2>
+              What to Expect From Don&apos;t Cook Don&apos;t Clean
+            </h2>
         </div>
         
         {/* Grid Container for top cards */}
@@ -143,7 +144,7 @@ export default function Process() {
                   {/* Icon Block with Sparkle Element */}
                   <div className="relative mb-4 flex-shrink-0">
                     <div className="bg-[#e9f6d4] p-5 rounded-[28px] inline-block">
-                      <img src={step.icon} alt={step.title} className="w-12 h-12 object-contain" style={{ filter: 'brightness(0) saturate(100%) invert(37%) sepia(95%) saturate(1311%) hue-rotate(90deg) brightness(99%) contrast(101%)' }} />
+                      <Image src={step.icon} alt={step.title} width={48} height={48} className="w-12 h-12 object-contain" style={{ filter: 'brightness(0) saturate(100%) invert(37%) sepia(95%) saturate(1311%) hue-rotate(90deg) brightness(99%) contrast(101%)' }} />
                     </div>
                     <div className="absolute -top-1 -right-1">
                       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 27 35">

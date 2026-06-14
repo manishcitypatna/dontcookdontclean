@@ -17,12 +17,12 @@ const SupportSection = () => {
                   <span className="text-xs md:small-text mt-1 leading-tight text-center">Customer Satisfaction</span>
                 </div>
                 <div className="flex flex-col items-center p-4">
-                  <span className="text-3xl md:text-4xl font-bold">5+</span>
+                  <span className="text-3xl md:text-4xl font-bold">10+</span>
                   <span className="text-xs md:small-text mt-1 leading-tight text-center">Service Categories</span>
                 </div>
                 <div className="flex flex-col items-center p-4">
-                  <span className="text-3xl md:text-4xl font-bold">24/7</span>
-                  <span className="text-xs md:small-text mt-1 leading-tight text-center">Customer Support</span>
+                  <span className="text-3xl md:text-4xl font-bold">500+</span>
+                  <span className="text-xs md:small-text mt-1 leading-tight text-center">Families Helped</span>
                 </div>
               </div>
             </div>
@@ -32,7 +32,7 @@ const SupportSection = () => {
           <div className="lg:w-1/2 p-12">
             <div className="max-w-md mx-auto">
               <SectionLabel>SUPPORT</SectionLabel>
-              <h2 className="mt-2 h2 text-text-primary">Need Help? <br />We're Here to Assist</h2>
+              <h2 className="mt-2 h2 text-text-primary">Need Help? <br />We&apos;re Here to Assist</h2>
               <p className="mt-4 body text-text-secondary">Whether you have a question, service concern, replacement request, or feedback, our support team is ready to help.</p>
               
               <form className="mt-8 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
