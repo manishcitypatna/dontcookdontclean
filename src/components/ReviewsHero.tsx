@@ -30,7 +30,7 @@ export default function ReviewsHero() {
 
               <div className="flex items-center gap-3">
                 <Image
-                  src="/images/review/review_female_1.png"
+                  src="/images/review/review_female_1.jpeg"
                   alt="Priya Sharma, customer review"
                   width={34}
                   height={34}
