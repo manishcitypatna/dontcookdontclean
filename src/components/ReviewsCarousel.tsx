@@ -28,7 +28,7 @@ export default function ReviewsCarousel() {
           <div className="bg-primary rounded-[28px] px-7 py-5 min-w-[290px] text-center">
             <div className="inline-flex items-center gap-2 bg-white rounded-full px-4 py-2 mb-3">
               <Image
-                src="/images/google_icon.png"
+                src="/images/google_icon.avif"
                 alt="Google"
                 width={16}
                 height={16}

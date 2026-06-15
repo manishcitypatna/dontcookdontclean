@@ -18,7 +18,6 @@ export default function WhyUs() {
 
   const leaf1Y = useTransform(scrollY, [0, 1200], [0, 35]);
   const leaf2Y = useTransform(scrollY, [0, 1200], [0, 60]);
-  const leaf3Y = useTransform(scrollY, [0, 1200], [0, 45]);
 
   return (
     <section className="section overflow-hidden bg-background">
@@ -99,20 +98,6 @@ export default function WhyUs() {
                 width={95}
                 height={95}
                 className="w-[95px] h-auto w-auto"
-              />
-            </motion.div>
-
-            {/* Leaf 3 */}
-            <motion.div
-              style={{ y: leaf3Y }}
-              className="absolute top-28 -left-6 z-20"
-            >
-              <Image
-                src="/images/growth-close-up-environmental-lush-natural-copy-2.png"
-                alt=""
-                width={70}
-                height={70}
-                className="w-[70px] h-auto w-auto"
               />
             </motion.div>
 

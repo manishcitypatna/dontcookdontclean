@@ -1,20 +1,39 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 // Import LeadForm component from the components directory
 import LeadForm from "@/components/LeadForm";
 
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const startVideo = () => {
+      if (videoRef.current) {
+        videoRef.current.play().catch(() => {});
+      }
+    };
+
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(startVideo);
+    } else {
+      setTimeout(startVideo, 100);
+    }
+  }, []);
+
   return (
     <section className="relative w-full" style={{ borderRadius: "0 0 32px 32px" }}>
       {/* Background Video Section */}
       <div className="relative w-full aspect-[4/3] md:aspect-auto md:h-[80vh] overflow-hidden" style={{ borderRadius: "0 0 32px 32px" }}>
         <video
-          autoPlay
+          ref={videoRef}
           muted
           loop
           playsInline
           poster="/images/hero_poster.avif"
           aria-hidden="true"
-          preload="none"
+          preload="auto"
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
         >
           <source src="/images/hero_Video.mp4" type="video/mp4" />

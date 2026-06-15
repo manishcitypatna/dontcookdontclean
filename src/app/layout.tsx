@@ -74,6 +74,17 @@ export default function RootLayout({
       className={`${alkatra.variable} ${quicksand.variable} h-full antialiased`}
     >
       <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/images/hero_poster.avif"
+        />
+        <link
+          rel="preload"
+          as="video"
+          href="/images/hero_Video.mp4"
+          type="video/mp4"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
