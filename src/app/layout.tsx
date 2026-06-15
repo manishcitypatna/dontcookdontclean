@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Alkatra, Quicksand } from "next/font/google";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import "./globals.css";
 
 // Configure Alkatra (for headings)
@@ -183,7 +184,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-background">{children}</body>
+      <body className="min-h-full flex flex-col bg-background">
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
