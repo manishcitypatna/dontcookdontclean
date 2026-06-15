@@ -13,7 +13,7 @@ export default function Services() {
         "Kitchen Maintenance"
       ],
       bg: "#FFFFFF",
-      icon: "/images/maid_service.png"
+      icon: "/images/maid_service.avif"
     },
     {
       id: 2,
@@ -25,7 +25,7 @@ export default function Services() {
         "Companion Care"
       ],
       bg: "#FFFFFF",
-      icon: "/images/child_elder_care.png"
+      icon: "/images/child_elder_care.avif"
     },
     {
       id: 3,
@@ -37,7 +37,7 @@ export default function Services() {
         "Pet Walking"
       ],
       bg: "#FFFFFF",
-      icon: "/images/specialized_assistance.png"
+      icon: "/images/specialized_assistance.avif"
     }
   ]
 

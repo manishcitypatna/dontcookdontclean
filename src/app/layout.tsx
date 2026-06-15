@@ -82,7 +82,7 @@ export default function RootLayout({
               "@type": "LocalBusiness",
               "name": "Don't Cook Don't Clean",
               "url": "https://dontcookdontclean.in",
-              "logo": "https://dontcookdontclean.in/images/logo.png",
+              "logo": "https://dontcookdontclean.in/images/logo.avif",
               "image": "https://dontcookdontclean.in/og-image.jpg",
               "description": "Don't Cook Don't Clean connects families in Patna with verified domestic helpers for cooking, cleaning, childcare, elder care, and household management.",
               "telephone": "+91-88771-94682",

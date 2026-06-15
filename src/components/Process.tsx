@@ -25,21 +25,21 @@ export default function Process() {
       number: "1",
       title: "Tell Us Your Requirements",
       description: "Share your household needs, preferred schedule, and the type of assistance you're looking for.",
-      icon: "/images/requirements.png",
+      icon: "/images/requirements.avif",
       align: "right"
     },
     {
       number: "2",
       title: "Get Matched with Helpers",
       description: "We'll recommend suitable verified maids based on your requirements.",
-      icon: "/images/matched.png",
+      icon: "/images/matched.avif",
       align: "left"
     },
     {
       number: "3",
       title: "Start Receiving Support",
       description: "Choose your preferred helper and enjoy reliable household assistance with ongoing support from our team.",
-      icon: "/images/support.png",
+      icon: "/images/support.avif",
       align: "right"
     }
   ];

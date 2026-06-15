@@ -28,7 +28,7 @@ export default function FooterSection() {
           <div className="flex flex-col items-start text-left">
             {/* Logo */}
             <Image
-              src="/images/logo.png"
+              src="/images/logo.avif"
               alt="Don't Cook Don't Clean"
               width={220}
               height={80}

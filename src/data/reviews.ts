@@ -17,7 +17,7 @@ export const reviews: Review[] = [
     reviewAge: "7 months ago",
     review:
       "Very reliable and punctual. Our household routine has become much easier.",
-    avatar: "/images/review/review_manish_kumar.png",
+    avatar: "/images/review/review_manish_kumar.avif",
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ export const reviews: Review[] = [
     reviewAge: "9 months ago",
     review:
       "Excellent service and professional support throughout the hiring process.",
-    avatar: "/images/review/review_rahul_verma.png",
+    avatar: "/images/review/review_rahul_verma.avif",
   },
   {
     id: 3,
@@ -37,7 +37,7 @@ export const reviews: Review[] = [
     reviewAge: "11 months ago",
     review:
       "The helper is hardworking and respectful. Overall a very good experience.",
-    avatar: "/images/review/review_anjali_singh.png",
+    avatar: "/images/review/review_anjali_singh.avif",
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ export const reviews: Review[] = [
     reviewAge: "8 months ago",
     review:
       "Customer support was responsive and helped us find the right match quickly.",
-    avatar: "/images/review/review_vikram_kumar.png",
+    avatar: "/images/review/review_vikram_kumar.avif",
   },
   {
     id: 5,
@@ -57,7 +57,7 @@ export const reviews: Review[] = [
     reviewAge: "10 months ago",
     review:
       "Extremely happy with the cooking helper. Authentic taste and very hygienic kitchen maintenance.",
-    avatar: "/images/review/review_priyanka_sharma.png",
+    avatar: "/images/review/review_priyanka_sharma.avif",
   },
   {
     id: 6,
@@ -67,7 +67,7 @@ export const reviews: Review[] = [
     reviewAge: "1 year ago",
     review:
       "Finding a verified full-time maid in Patna used to be tough. Glad we tried this service.",
-    avatar: "/images/review/review_amit_mishra.png",
+    avatar: "/images/review/review_amit_mishra.avif",
   },
   {
     id: 7,
@@ -77,7 +77,7 @@ export const reviews: Review[] = [
     reviewAge: "7 months ago",
     review:
       "The childcare assistant is so gentle and professional with my baby. Complete peace of mind.",
-    avatar: "/images/review/review_sneha_reddy.png",
+    avatar: "/images/review/review_sneha_reddy.avif",
   },
   {
     id: 8,
@@ -87,7 +87,7 @@ export const reviews: Review[] = [
     reviewAge: "9 months ago",
     review:
       "Good experience. The replacement process was swift when our first helper had a personal emergency.",
-    avatar: "/images/review/review_rohan_gupta.png",
+    avatar: "/images/review/review_rohan_gupta.avif",
   },
   {
     id: 9,
@@ -97,7 +97,7 @@ export const reviews: Review[] = [
     reviewAge: "8 months ago",
     review:
       "Flawless house cleaning and deep sanitization. Highly recommend their short-term festival helpers.",
-    avatar: "/images/review/review_kavita_srivastava.png",
+    avatar: "/images/review/review_kavita_srivastava.avif",
   },
   {
     id: 10,
@@ -107,7 +107,7 @@ export const reviews: Review[] = [
     reviewAge: "11 months ago",
     review:
       "The elder care helper takes great care of my parents' routines and medications. Very respectful.",
-    avatar: "/images/review/review_sandeep_jha.png",
+    avatar: "/images/review/review_sandeep_jha.avif",
   },
   {
     id: 11,
@@ -117,7 +117,7 @@ export const reviews: Review[] = [
     reviewAge: "10 months ago",
     review:
       "Very structured system. No hidden charges and proper documentation provided for the maid.",
-    avatar: "/images/review/review_kriti_sinha.png",
+    avatar: "/images/review/review_kriti_sinha.avif",
   },
   {
     id: 12,
@@ -127,7 +127,7 @@ export const reviews: Review[] = [
     reviewAge: "1 year ago",
     review:
       "Our live-in helper handles everything smoothly from clothes washing to kitchen setup. Excellent.",
-    avatar: "/images/review/review_rajesh_tiwari.png",
+    avatar: "/images/review/review_rajesh_tiwari.avif",
   },
   {
     id: 13,
@@ -137,7 +137,7 @@ export const reviews: Review[] = [
     reviewAge: "8 months ago",
     review:
       "Punctuality is great. She manages household chores independently without needing constant supervision.",
-    avatar: "/images/review/review_meera_nair.png",
+    avatar: "/images/review/review_meera_nair.avif",
   },
   {
     id: 14,
@@ -147,7 +147,7 @@ export const reviews: Review[] = [
     reviewAge: "7 months ago",
     review:
       "Reliable and highly professional team. They matched us with a perfect cook within three days.",
-    avatar: "/images/review/review_abhishek_singh.png",
+    avatar: "/images/review/review_abhishek_singh.avif",
   },
   {
     id: 15,
@@ -157,6 +157,6 @@ export const reviews: Review[] = [
     reviewAge: "10 months ago",
     review:
       "Completely stress-free experience. The helper's background check data gave us great reassurance.",
-    avatar: "/images/review/review_pooja_choudhary.png",
+    avatar: "/images/review/review_pooja_choudhary.avif",
   },
 ];

@@ -80,7 +80,7 @@ export default function WhyUs() {
               className="absolute -top-6 left-2 z-20"
             >
               <Image
-                src="/images/growth-close-up-environmental-lush-natural.png"
+                src="/images/growth-close-up-environmental-lush-natural.avif"
                 alt=""
                 width={55}
                 height={55}
@@ -94,7 +94,7 @@ export default function WhyUs() {
               className="absolute top-12 -left-14 z-20"
             >
               <Image
-                src="/images/growth-close-up-environmental-lush-natural-copy.png"
+                src="/images/growth-close-up-environmental-lush-natural-copy.avif"
                 alt=""
                 width={95}
                 height={95}
@@ -119,7 +119,7 @@ export default function WhyUs() {
             {/* Main Image */}
             <div className="relative w-full h-[420px] md:h-[560px] lg:h-[650px] overflow-hidden rounded-[24px]">
               <Image
-                src="/images/why_us.png"
+                src="/images/why_us.avif"
                 alt="Trusted Domestic Helpers"
                 fill
                 className="object-cover"

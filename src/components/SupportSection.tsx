@@ -8,7 +8,7 @@ const SupportSection = () => {
         <div className="flex flex-col lg:flex-row bg-white rounded-[24px] shadow-[0_10px_30px_rgba(0,0,0,0.08)] max-w-6xl mx-auto">
           {/* Left Column - Image and Statistics */}
           <div className="lg:w-1/2 relative bg-cover bg-center flex flex-col justify-end p-6 md:p-10 rounded-l-[24px]"
-               style={{ backgroundImage: "url('/images/support_banner.png')" }}>
+               style={{ backgroundImage: "url('/images/support_banner.avif')" }}>
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-50 rounded-l-[24px]"></div>
             <div className="relative z-10 text-white">
               <div className="flex flex-col md:flex-row md:justify-around text-center gap-4 md:gap-0">

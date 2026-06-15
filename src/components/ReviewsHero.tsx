@@ -11,7 +11,7 @@ export default function ReviewsHero() {
           <div className="relative">
             <div className="overflow-hidden rounded-[24px]">
               <Image
-                src="/images/review_heroNabber.png"
+                src="/images/review_heroNabber.avif"
                 alt="Happy family at home after hiring a trusted maid service in Patna"
                 width={1024}
                 height={631}
@@ -30,7 +30,7 @@ export default function ReviewsHero() {
 
               <div className="flex items-center gap-3">
                 <Image
-                  src="/images/review/review_female_1.jpeg"
+                  src="/images/review/review_female_1.avif"
                   alt="Priya Sharma, customer review"
                   width={34}
                   height={34}

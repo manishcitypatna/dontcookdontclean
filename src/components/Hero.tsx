@@ -12,7 +12,7 @@ export default function Hero() {
           muted
           loop
           playsInline
-          poster="/images/hero_poster.jpg"
+          poster="/images/hero_poster.avif"
           aria-hidden="true"
           preload="none"
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
@@ -28,7 +28,7 @@ export default function Hero() {
           {/* Logo at top center */}
           <div className="w-full flex justify-center mb-3">
             <Image
-              src="/images/logo.png"
+              src="/images/logo.avif"
               alt="Don't Cook Don't Clean"
               width={160}
               height={64}
