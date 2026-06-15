@@ -86,7 +86,7 @@ export default function ReviewsCarousel() {
                       alt={review.name}
                       width={52}
                       height={52}
-                      className="rounded-full"
+                      className="rounded-full w-auto h-auto"
                     />
 
                     <div>
