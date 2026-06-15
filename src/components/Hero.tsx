@@ -14,6 +14,7 @@ export default function Hero() {
           playsInline
           poster="/images/hero_poster.jpg"
           aria-hidden="true"
+          preload="none"
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
         >
           <source src="/images/hero_Video.mp4" type="video/mp4" />

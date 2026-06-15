@@ -13,7 +13,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <main className="flex flex-col min-h-screen">
       <Hero />
       <About />
       <Services />
@@ -26,6 +26,6 @@ export default function Home() {
       {/* BLOG SECTION — Uncomment when articles are ready */}
       {/* <BlogSection /> */}
       <Footer />
-    </div>
+    </main>
   );
 }

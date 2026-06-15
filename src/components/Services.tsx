@@ -72,9 +72,9 @@ export default function Services() {
           
           {/* Trust Card */}
           <div className="p-8 rounded-[24px] border-2 border-primary bg-gradient-to-br from-green-50 to-[#e8f5d3]">
-            <h3 className="h3 text-primary mb-6 text-center">
+            <h4 className="h3 text-primary mb-6 text-center">
               100% Satisfaction Guarantee
-            </h3>
+            </h4>
             <ul className="space-y-3 mb-6">
               <li className="flex items-center gap-2">
                 <span className="text-primary text-lg">✓</span>

@@ -131,7 +131,7 @@ export default function ReviewsCarousel() {
                 className={`transition-all rounded-full ${
                   currentIndex === index
                     ? "w-8 h-2 bg-primary"
-                    : "w-2 h-2 bg-primary/25"
+                    : "w-3 h-3 bg-primary/25"
                 }`}
               />
             ))}
