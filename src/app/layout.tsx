@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Alkatra, Quicksand } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 // Configure Alkatra (for headings)
 const alkatra = Alkatra({
@@ -57,8 +59,8 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/fav-icon.png' },
-      { url: '/fav-icon-150x150.png', sizes: '150x150', type: 'image/png' },
+      { url: '/favicon.ico' },
+      { url: '/icon.png' },
     ],
   },
 };
@@ -194,7 +196,11 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-background">{children}</body>
+      <body className="min-h-full flex flex-col bg-background">
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
