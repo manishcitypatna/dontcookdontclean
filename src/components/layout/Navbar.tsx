@@ -22,8 +22,9 @@ export default function Navbar() {
           <Image
             src="/images/nav-logo.avif"
             alt="Don't Cook Don't Clean"
-            fill
-            className="object-contain object-left"
+            width={65}
+            height={65}
+            className="object-contain object-left h-auto"
             priority
           />
         </Link>

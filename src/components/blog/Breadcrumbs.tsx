@@ -1,14 +1,14 @@
 import Link from "next/link";
 
 interface BreadcrumbsProps {
-  title: string;
+  slug: string;
 }
 
-export default function Breadcrumbs({ title }: BreadcrumbsProps) {
+export default function Breadcrumbs({ slug }: BreadcrumbsProps) {
   return (
-    <nav aria-label="Breadcrumb" className="section pb-0">
+    <nav aria-label="Breadcrumb" className="pt-32 pb-8">
       <div className="container">
-        <ol className="flex flex-wrap items-center gap-2 text-sm text-text-secondary">
+        <ol className="flex flex-wrap items-center justify-center gap-2 text-sm text-text-secondary">
           <li>
             <Link href="/" className="hover:text-primary">
               Home
@@ -22,7 +22,7 @@ export default function Breadcrumbs({ title }: BreadcrumbsProps) {
           </li>
           <li aria-hidden="true">›</li>
           <li aria-current="page" className="text-text-primary font-medium">
-            {title}
+            {slug}
           </li>
         </ol>
       </div>

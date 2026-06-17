@@ -49,7 +49,7 @@ export default function BlogSection({ blogs }: BlogSectionProps) {
             <SectionLabel>FROM OUR BLOG</SectionLabel>
 
             <h2 className="h2 text-text-primary mb-10">
-              Cleaning Tips & Hacks
+              Maid & Cook Help for Patna Families
             </h2>
 
             <Link href="/blog" className="btn-primary">

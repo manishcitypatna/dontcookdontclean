@@ -8,6 +8,7 @@ import ArticleCTA from "@/components/blog/ArticleCTA";
 import ArticleAuthor from "@/components/blog/ArticleAuthor";
 import Breadcrumbs from "@/components/blog/Breadcrumbs";
 import RelatedArticles from "@/components/blog/RelatedArticles";
+import FaqSection from "@/components/landing/FaqSection";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -108,7 +109,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               {
                 "@type": "ListItem",
                 position: 3,
-                name: blog.title,
+                name: blog.slug,
                 item: articleUrl,
               },
             ],
@@ -172,7 +173,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       )}
 
       {/* Breadcrumb Navigation */}
-      <Breadcrumbs title={blog.title} />
+      <Breadcrumbs slug={blog.slug} />
 
       {/* Hero Section */}
       <section className="section pt-8">
@@ -226,21 +227,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
       {/* FAQ Section (if faqs exist) */}
       {blog.faqs && blog.faqs.length > 0 && (
-        <section className="section">
-          <div className="container max-w-3xl mx-auto">
-            <h2 className="h2 text-text-primary mb-8 text-center">
-              Frequently Asked Questions
-            </h2>
-            <div className="space-y-6">
-              {blog.faqs.map((faq, index) => (
-                <div key={index} className="card">
-                  <h3 className="h4 text-text-primary mb-2">{faq.question}</h3>
-                  <p className="body text-text-secondary">{faq.answer}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <FaqSection faqs={blog.faqs} showSectionLabel={false} />
       )}
 
       {/* Article CTA */}

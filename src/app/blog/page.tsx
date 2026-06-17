@@ -102,7 +102,7 @@ export default function BlogIndex() {
       )}
 
       {/* All Articles */}
-      <section className="section" id="articles">
+      <section className="section bg-white" id="articles">
         <div className="container">
           <div className="text-center mb-16">
             <SectionLabel>Latest Articles</SectionLabel>

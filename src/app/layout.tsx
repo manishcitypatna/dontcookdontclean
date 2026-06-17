@@ -21,7 +21,7 @@ const quicksand = Quicksand({
 });
 
 export const metadata: Metadata = {
-  title: "Trusted Maid & Cook Services in Patna | Don't Cook Don't Clean",
+  title: "Maid Service in Patna | Cook for Home & Cleaning Maid Services | Don't Cook Don't Clean",
   description: "Hire verified maids in Patna for cooking, cleaning, childcare & elder care. Flexible part-time, full-time & live-in plans. Background checked & ID verified helpers. Call +91-88771-94682.",
   keywords: [
     "maid service Patna",

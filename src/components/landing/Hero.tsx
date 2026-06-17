@@ -30,10 +30,10 @@ export default function Hero() {
           
           <div className="text-center mb-4">
             <h1 className="h1 text-text-primary mb-3">
-              Hire Trusted Maids in Patna for Cooking, Cleaning & Household Care
+              Hire Trusted Maids & Cook for Home in Patna — Cleaning, Cooking & Household Care
             </h1>
             <p className="body text-text-secondary">
-              Verified domestic helpers for cooking, house cleaning, clothes washing, childcare, elder care, and pet assistance — available across Patna with flexible part-time, full-time, and live-in plans.
+              Verified cleaning maid services in Patna for cooking, house cleaning, clothes washing, childcare, elder care, and pet assistance — available across Patna with flexible part-time, full-time, and live-in plans.
             </p>
           </div>
           <LeadForm />
