@@ -49,14 +49,24 @@ export default function FooterSection() {
             {/* Contact */}
             <div className="mt-8 space-y-4">
               <div className="flex items-center gap-3 text-text-secondary">
-                <span className="text-lg">📞</span>
+                <Image src="/images/icon/phone-call.avif" alt="Phone" width={24} height={24} className="h-6 w-6" />
                 <span>+91-88771-94682</span>
               </div>
 
               <div className="flex items-center gap-3 text-text-secondary">
-                <span className="text-lg">📧</span>
+                <Image src="/images/icon/mail.avif" alt="Email" width={24} height={24} className="h-6 w-6" />
                 <a href="mailto:info@dontcookdontclean.in" className="hover:text-primary transition-colors">info@dontcookdontclean.in</a>
               </div>
+            </div>
+
+            {/* Social Links */}
+            <div className="mt-6 flex items-center gap-4">
+              <a href="https://www.instagram.com/dontcook_dontclean" target="_blank" rel="noopener noreferrer">
+                <Image src="/images/icon/instagram.avif" alt="Instagram" width={28} height={28} className="h-7 w-7 hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=61590679025518" target="_blank" rel="noopener noreferrer">
+                <Image src="/images/icon/facebook.avif" alt="Facebook" width={28} height={28} className="h-7 w-7 hover:scale-110 transition-transform" />
+              </a>
             </div>
 
             {/* CTA */}

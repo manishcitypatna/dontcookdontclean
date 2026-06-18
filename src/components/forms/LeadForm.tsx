@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import ThankYouPopup from "@/components/shared/ThankYouPopup";
 
 export default function LeadForm() {
   const [formData, setFormData] = useState({
@@ -10,20 +11,64 @@ export default function LeadForm() {
     phone: "",
     engagementDuration: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showThankYou, setShowThankYou] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you for your inquiry! We will contact you soon.");
+    setIsSubmitting(true);
+
+    try {
+      const subject = formData.name ? `${formData.name} | New lead form` : "New Lead Form Submission";
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          access_key: "ff5518a3-f898-43de-b14b-6bdfd2d83626",
+          ...formData,
+          subject,
+          from_name: "Don't Cook Don't Clean"
+        })
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        setShowThankYou(true);
+        setFormData({
+          name: "",
+          serviceRequired: "",
+          shiftPreference: "",
+          email: "",
+          phone: "",
+          engagementDuration: "",
+        });
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full">
+    <>
+      <ThankYouPopup
+        isOpen={showThankYou}
+        onClose={() => setShowThankYou(false)}
+      />
+      <form onSubmit={handleSubmit} className="w-full">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
         {/* Name */}
         <div className="md:col-span-1">
@@ -137,11 +182,13 @@ export default function LeadForm() {
       <div className="w-full">
         <button
           type="submit"
+          disabled={isSubmitting}
           className="btn-secondary w-full"
         >
-          Submit
+          {isSubmitting ? "Submitting..." : "Submit"}
         </button>
       </div>
     </form>
+    </>
   );
 }
