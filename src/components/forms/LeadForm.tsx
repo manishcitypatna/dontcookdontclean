@@ -35,7 +35,8 @@ export default function LeadForm() {
           access_key: "ff5518a3-f898-43de-b14b-6bdfd2d83626",
           ...formData,
           subject,
-          from_name: "Don't Cook Don't Clean"
+          from_name: "Don't Cook Don't Clean",
+          redirect: ""
         })
       });
 
