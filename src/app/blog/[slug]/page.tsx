@@ -17,7 +17,18 @@ import type { Metadata } from "next";
 const articlesDirectory = path.join(process.cwd(), "src/data/blog/articles");
 
 async function getCompiledMDX(slug: string) {
-  const filePath = path.join(articlesDirectory, `${slug}.mdx`);
+  const fileExtensions = [".mdx", ".md"];
+  let filePath = "";
+  for (const ext of fileExtensions) {
+    const candidatePath = path.join(articlesDirectory, `${slug}${ext}`);
+    if (fs.existsSync(candidatePath)) {
+      filePath = candidatePath;
+      break;
+    }
+  }
+  if (!filePath) {
+    throw new Error(`Blog post not found for slug: ${slug}`);
+  }
   const fileContents = fs.readFileSync(filePath, "utf8");
   const { content } = matter(fileContents);
   const { default: MDXContent } = await evaluate(content, {

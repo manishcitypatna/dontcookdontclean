@@ -15,7 +15,7 @@ function calculateReadingTime(content: string): string {
 export function getAllBlogs(): BlogPost[] {
   const fileNames = fs.readdirSync(articlesDirectory);
   const blogs = fileNames
-    .filter((fileName) => fileName.endsWith(".mdx"))
+    .filter((fileName) => fileName.endsWith(".mdx") || fileName.endsWith(".md"))
     .map((fileName) => {
       const fullPath = path.join(articlesDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, "utf8");

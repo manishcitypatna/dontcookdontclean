@@ -22,6 +22,7 @@ collections:
     folder: "src/data/blog/articles"
     create: true
     slug: "{{slug}}"
+    extension: "mdx"
     fields:
       - { label: "Title", name: "title", widget: "string", hint: "Make it catchy and SEO-friendly" }
       - { label: "Description", name: "description", widget: "text", hint: "Brief description (appears in previews and SEO)" }
