@@ -1,0 +1,47 @@
+backend:
+  name: github
+  repo: manishcitypatna/dontcookdontclean
+  branch: main
+  site_domain: dontcookdontclean.in
+  base_url: https://api.netlify.com
+  auth_endpoint: https://api.netlify.com/auth
+  app_id: Ov23liXVUvmtzZazW9ex
+
+local_backend: true
+
+media_folder: "public/blog-image"
+public_folder: "/blog-image"
+
+logo_url: "/images/nav-logo.avif"
+
+site_url: "https://dontcookdontclean.in"
+display_url: "https://dontcookdontclean.in"
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    label_singular: "Blog Post"
+    folder: "src/data/blog/articles"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", hint: "Make it catchy and SEO-friendly" }
+      - { label: "Description", name: "description", widget: "text", hint: "Brief description (appears in previews and SEO)" }
+      - { label: "Slug", name: "slug", widget: "string", hint: "URL-friendly version of the title (e.g., 'my-blog-post')" }
+      - { label: "Featured Image", name: "image", widget: "image", choose_url: false, hint: "Main image for the blog post" }
+      - { label: "Category", name: "category", widget: "select", options: ["Domestic Help", "Cooking Services", "Home Care", "Cleaning Services", "Lifestyle"], hint: "Select a category for this post" }
+      - { label: "Published Date", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Author", name: "author", widget: "select", options: ["Don't Cook Don't Clean", "Manish Kumar"], default: "Don't Cook Don't Clean" }
+      - { label: "Featured Post", name: "featured", widget: "boolean", required: false, hint: "Mark this post as featured to display it prominently" }
+      - label: "FAQs"
+        name: "faqs"
+        widget: "list"
+        required: false
+        allow_add: true
+        label_singular: "FAQ"
+        fields:
+          - { label: "Question", name: "question", widget: "string" }
+          - { label: "Answer", name: "answer", widget: "text" }
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
