@@ -16,6 +16,19 @@ site_url: "https://dontcookdontclean.in"
 display_url: "https://dontcookdontclean.in"
 
 collections:
+  - name: "categories"
+    label: "Categories"
+    label_singular: "Category"
+    folder: "src/data/blog/categories"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    fields:
+      - { label: "Category Name", name: "name", widget: "string", hint: "Display name of the category" }
+      - { label: "Slug", name: "slug", widget: "string", hint: "URL-friendly version (e.g., 'cooking-services')" }
+      - { label: "Description", name: "description", widget: "text", required: false, hint: "Brief description of the category" }
+      - { label: "Category Image", name: "image", widget: "image", required: false, hint: "Icon or image for this category" }
+
   - name: "blog"
     label: "Blog Posts"
     label_singular: "Blog Post"
@@ -28,10 +41,18 @@ collections:
       - { label: "Description", name: "description", widget: "text", hint: "Brief description (appears in previews and SEO)" }
       - { label: "Slug", name: "slug", widget: "string", hint: "URL-friendly version of the title (e.g., 'my-blog-post')" }
       - { label: "Featured Image", name: "image", widget: "image", choose_url: false, hint: "Main image for the blog post" }
-      - { label: "Category", name: "category", widget: "select", options: ["Domestic Help", "Cooking Services", "Home Care", "Cleaning Services", "Lifestyle"], hint: "Select a category for this post" }
+      - label: "Category"
+        name: "category"
+        widget: "relation"
+        collection: "categories"
+        search_fields: ["name"]
+        display_fields: ["name"]
+        value_field: "name"
+        hint: "Select or create a category"
       - { label: "Published Date", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "Author", name: "author", widget: "select", options: ["Don't Cook Don't Clean", "Manish Kumar"], default: "Don't Cook Don't Clean" }
       - { label: "Featured Post", name: "featured", widget: "boolean", required: false, hint: "Mark this post as featured to display it prominently" }
+      - { label: "Status", name: "status", widget: "select", options: ["published", "draft"], default: "published", hint: "Set to draft to hide from public view" }
       - label: "FAQs"
         name: "faqs"
         widget: "list"
@@ -41,6 +62,36 @@ collections:
         fields:
           - { label: "Question", name: "question", widget: "string" }
           - { label: "Answer", name: "answer", widget: "text" }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        allow_add: true
+        label_singular: "Tag"
+        field: { label: "Tag", name: "tag", widget: "string" }
+      - label: "SEO Settings"
+        name: "seo"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Meta Title", name: "metaTitle", widget: "string", required: false, hint: "SEO title (defaults to post title)" }
+          - { label: "Meta Description", name: "metaDescription", widget: "text", required: false, hint: "SEO description (defaults to post description)" }
+          - { label: "Canonical URL", name: "canonicalUrl", widget: "string", required: false, hint: "Canonical URL if this post was published elsewhere" }
+          - { label: "Open Graph Image", name: "ogImage", widget: "image", required: false, hint: "Image for social sharing" }
+      - label: "Related Posts"
+        name: "relatedPosts"
+        widget: "list"
+        required: false
+        allow_add: true
+        label_singular: "Related Post"
+        fields:
+          - label: "Post"
+            name: "post"
+            widget: "relation"
+            collection: "blog"
+            search_fields: ["title"]
+            display_fields: ["title"]
+            value_field: "slug"
       - label: "Body"
         name: "body"
         widget: "markdown"
