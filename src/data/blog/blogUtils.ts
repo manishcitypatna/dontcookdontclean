@@ -22,8 +22,12 @@ export function getAllBlogs(): BlogPost[] {
       const { data, content } = matter(fileContents);
       const frontmatter = data as BlogFrontmatter;
 
+      const rawPublishedAt = frontmatter.publishedAt as any;
       return {
         ...frontmatter,
+        publishedAt: rawPublishedAt instanceof Date 
+          ? rawPublishedAt.toISOString().split('T')[0] 
+          : String(rawPublishedAt),
         content,
         readingTime: calculateReadingTime(content),
       };
