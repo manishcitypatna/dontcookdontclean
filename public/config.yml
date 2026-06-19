@@ -38,6 +38,7 @@ collections:
     create: true
     slug: "{{slug}}"
     extension: "mdx"
+    format: "frontmatter"
     fields:
       - { label: "Title", name: "title", widget: "string", hint: "Make it catchy and SEO-friendly" }
       - { label: "Description", name: "description", widget: "text", hint: "Brief description (appears in previews and SEO)" }
