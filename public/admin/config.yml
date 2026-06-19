@@ -3,7 +3,7 @@ backend:
   repo: manishcitypatna/dontcookdontclean
   branch: main
   site_domain: dontcookdontclean.in
-  base_url: https://decap-cms-oauth.vercel.app/auth
+  base_url: https://netlify-cms.adrianub.vercel.app
 
 local_backend: true
 
