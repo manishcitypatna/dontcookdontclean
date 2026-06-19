@@ -3,8 +3,7 @@ backend:
   repo: manishcitypatna/dontcookdontclean
   branch: main
   site_domain: dontcookdontclean.in
-  base_url: https://api.netlify.com
-  auth_endpoint: https://api.netlify.com/auth
+  base_url: https://api.netlify.com/auth
   app_id: Ov23liXVUvmtzZazW9ex
 
 local_backend: true
