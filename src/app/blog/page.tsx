@@ -92,25 +92,27 @@ export default function BlogIndex() {
               <SectionLabel>Featured Articles</SectionLabel>
               <h2 className="h2 text-text-primary">Our Top Guides</h2>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {featuredBlogs.map((blog) => (
-                <BlogCard key={blog.slug} blog={blog} />
-              ))}
+            <div className="overflow-x-auto pb-4 -mx-4 px-4">
+              <div className="flex gap-4 items-start justify-center">
+                {featuredBlogs.map((blog) => (
+                  <BlogCard key={blog.slug} blog={blog} compact />
+                ))}
+              </div>
             </div>
           </div>
         </section>
       )}
 
       {/* All Articles */}
-      <section className="section bg-white" id="articles">
+      <section className="section bg-white py-16" id="articles">
         <div className="container">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <SectionLabel>Latest Articles</SectionLabel>
             <h2 className="h2 text-text-primary">All Resources</h2>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {allBlogs.map((blog) => (
-              <BlogCard key={blog.slug} blog={blog} />
+              <BlogCard key={blog.slug} blog={blog} medium />
             ))}
           </div>
         </div>

@@ -3,6 +3,7 @@
 // src/components/FooterSection.tsx
 import Image from "next/image";
 import Script from "next/script";
+import Link from "next/link";
 
 declare global {
   interface Window {
@@ -147,11 +148,17 @@ export default function FooterSection() {
         {/* Divider */}
         <div className="border-t border-border mt-16 pt-8">
           <div className="text-center">
-            <p className="small-text text-text-secondary">
-              © 2026 Don&apos;t Cook Don&apos;t Clean. All Rights Reserved.
-            </p>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
+              <p className="small-text text-text-secondary">
+                © 2026 Don&apos;t Cook Don&apos;t Clean. All Rights Reserved.
+              </p>
+              <div className="hidden md:block text-text-secondary/40">•</div>
+              <Link href="/privacy-policy" className="small-text text-text-secondary hover:text-primary transition-colors">
+                Privacy Policy
+              </Link>
+            </div>
 
-            <p className="small-text text-text-secondary/60 mt-2">
+            <p className="small-text text-text-secondary/60">
               Serving households in Patna and Bihar with trusted, verified domestic help solutions.
             </p>
           </div>

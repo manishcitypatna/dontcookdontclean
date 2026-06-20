@@ -3,6 +3,8 @@ import Image from "next/image";
 
 interface BlogCardProps {
   blog: any;
+  compact?: boolean;
+  medium?: boolean;
 }
 
 function formatDate(dateString: string) {
@@ -10,7 +12,97 @@ function formatDate(dateString: string) {
   return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
 
-export default function BlogCard({ blog }: BlogCardProps) {
+export default function BlogCard({ blog, compact = false, medium = false }: BlogCardProps) {
+  if (compact) {
+    return (
+      <Link href={`/blog/${blog.slug}`} className="shrink-0">
+        <article
+          className="
+            bg-white
+            rounded-[16px]
+            overflow-hidden
+            shadow-[0_4px_15px_rgba(0,0,0,0.08)]
+            hover:shadow-[0_4px_15px_rgba(0,0,0,0.12)]
+            hover:-translate-y-1
+            transition-all
+            duration-300
+            w-[220px]
+          "
+        >
+          {/* Image Section (70%) */}
+          <div className="relative w-full h-[140px]">
+            <Image
+              src={blog.image}
+              alt={blog.title}
+              fill
+              className="object-cover"
+              sizes="220px"
+            />
+          </div>
+          {/* Text Section (30%) */}
+          <div className="p-3 space-y-2">
+            <span className="inline-block text-[10px] font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+              {blog.category}
+            </span>
+            <h3 className="text-[12px] font-semibold text-text-primary line-clamp-2">
+              {blog.title}
+            </h3>
+            <div className="flex items-center justify-between text-[10px] text-text-secondary">
+              <span>{formatDate(blog.publishedAt)}</span>
+              <span>{blog.readingTime}</span>
+            </div>
+          </div>
+        </article>
+      </Link>
+    );
+  }
+
+  if (medium) {
+    return (
+      <Link href={`/blog/${blog.slug}`}>
+        <article
+          className="
+            bg-white
+            rounded-[20px]
+            overflow-hidden
+            shadow-[0_6px_20px_rgba(0,0,0,0.08)]
+            hover:shadow-[0_6px_20px_rgba(0,0,0,0.12)]
+            hover:-translate-y-1
+            transition-all
+            duration-300
+          "
+        >
+          {/* Image Section */}
+          <div className="relative w-full h-[200px]">
+          <Image
+            src={blog.image}
+            alt={blog.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </div>
+          {/* Text Section */}
+          <div className="p-4 space-y-3">
+            <span className="inline-block text-[11px] font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
+              {blog.category}
+            </span>
+            <h3 className="text-[15px] font-semibold text-text-primary line-clamp-2">
+              {blog.title}
+            </h3>
+            <p className="text-[12px] text-text-secondary line-clamp-2">
+              {blog.description}
+            </p>
+            <div className="flex items-center justify-between text-[11px] text-text-secondary">
+              <span>{formatDate(blog.publishedAt)}</span>
+              <span>{blog.readingTime}</span>
+            </div>
+          </div>
+        </article>
+      </Link>
+    );
+  }
+
   return (
     <Link href={`/blog/${blog.slug}`}>
       <article
@@ -25,7 +117,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
           duration-300
         "
       >
-        <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-5 p-5 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-5 p-5 items-center">
           <div className="space-y-3">
             <span className="inline-block small-text font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
               {blog.category}
@@ -68,10 +160,10 @@ export default function BlogCard({ blog }: BlogCardProps) {
             <Image
               src={blog.image}
               alt={blog.title}
-              width={400}
-              height={300}
+              width={500}
+              height={375}
               className="w-full h-auto object-cover rounded-[20px]"
-              sizes="(max-width: 768px) 100vw, 40vw"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
         </div>
