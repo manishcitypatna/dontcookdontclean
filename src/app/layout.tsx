@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Alkatra, Quicksand } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
@@ -87,6 +88,18 @@ export default function RootLayout({
           href="/images/hero_Video.mp4"
           type="video/mp4"
         />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-WWC2MWB4QB"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-WWC2MWB4QB');
+          `}
+        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
