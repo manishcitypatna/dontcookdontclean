@@ -89,7 +89,7 @@ export default function RootLayout({
           type="video/mp4"
         />
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-WWC2MWB4QB"
+          src="https://www.googletagmanager.com/gtag/js?id=G-65TXQTKK7P"
           strategy="afterInteractive"
         />
         <Script id="ga4-init" strategy="afterInteractive">
@@ -97,7 +97,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-WWC2MWB4QB');
+            gtag('config', 'G-65TXQTKK7P');
           `}
         </Script>
         <script
