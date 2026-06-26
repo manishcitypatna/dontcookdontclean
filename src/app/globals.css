@@ -172,6 +172,7 @@ body {
   border-radius: 16px;
   border: 1px solid var(--border-color);
   font-family: var(--font-body);
+  font-size: 1rem;
   padding: 0 16px;
   width: 100%;
   transition: border-color 200ms ease;
@@ -179,6 +180,10 @@ body {
 .form-input:focus {
   outline: none;
   border-color: var(--primary);
+}
+.form-input::placeholder {
+  font-size: 1rem;
+  color: var(--text-secondary);
 }
 
 .form-textarea {

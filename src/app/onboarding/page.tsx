@@ -17,12 +17,12 @@ type FormDataState = {
   pinCode: string;
   // Step 3
   servicesOffered: string[];
-  preferredShiftType: string;
+  preferredShiftType: string[];
   // Step 4
-  expectedMonthlySalary: string;
+  expectedPartTimeSalary: string;
+  expectedFullTimeSalary: string;
+  expectedLiveInSalary: string;
   expectedDailySalary: string;
-  expectedHalfDaySalary: string;
-  expectedHourlySalary: string;
   // Step 5
   photo: File | null;
   aadharFront: File | null;
@@ -42,11 +42,11 @@ const initialFormData: FormDataState = {
   state: "Bihar",
   pinCode: "",
   servicesOffered: [],
-  preferredShiftType: "",
-  expectedMonthlySalary: "",
+  preferredShiftType: [],
+  expectedPartTimeSalary: "",
+  expectedFullTimeSalary: "",
+  expectedLiveInSalary: "",
   expectedDailySalary: "",
-  expectedHalfDaySalary: "",
-  expectedHourlySalary: "",
   photo: null,
   aadharFront: null,
   aadharBack: null,
@@ -68,10 +68,38 @@ const SERVICES = [
 
 // Shift options
 const SHIFTS = [
-  { id: "part-time", label: "Part-Time", hindi: "अंशकालिक", icon: "/images/icon/part-time.avif" },
-  { id: "full-time", label: "Full-Time", hindi: "पूर्णकालिक", icon: "/images/icon/full-time.avif" },
-  { id: "live-in", label: "Live-In", hindi: "रहने वाला", icon: "/images/icon/live-in.avif" },
-  { id: "hourly", label: "Hourly", hindi: "प्रति घंटा", icon: "/images/icon/hourly.avif" },
+  { 
+    id: "part-time", 
+    label: "Part time", 
+    hindi: "अंशकालिक", 
+    detail: "2hr morning & 2hr evening", 
+    hindiDetail: "सुबह 2 घंटे और शाम 2 घंटे", 
+    icon: "/images/icon/part-time.avif" 
+  },
+  { 
+    id: "full-time", 
+    label: "Full time", 
+    hindi: "पूर्णकालिक", 
+    detail: "8-10 hours complete day", 
+    hindiDetail: "8-10 घंटे पूरा दिन", 
+    icon: "/images/icon/full-time.avif" 
+  },
+  { 
+    id: "live-in", 
+    label: "Live in", 
+    hindi: "रहने वाला", 
+    detail: "Stay in house completely", 
+    hindiDetail: "घर में पूरी तरह रहें", 
+    icon: "/images/icon/live-in.avif" 
+  },
+  { 
+    id: "daily", 
+    label: "Daily", 
+    hindi: "दैनिक", 
+    detail: "Work for 1 day", 
+    hindiDetail: "1 दिन के लिए काम", 
+    icon: "/images/icon/hourly.avif" 
+  },
 ];
 
 export default function Onboarding() {
@@ -104,13 +132,13 @@ export default function Onboarding() {
           validatePinCode(formData.pinCode)
         );
       case 3:
-        return formData.servicesOffered.length > 0 && formData.preferredShiftType !== "";
+        return formData.servicesOffered.length > 0 && formData.preferredShiftType.length > 0;
       case 4:
         return (
-          formData.expectedMonthlySalary.trim() !== "" &&
-          formData.expectedDailySalary.trim() !== "" &&
-          formData.expectedHalfDaySalary.trim() !== "" &&
-          formData.expectedHourlySalary.trim() !== ""
+          formData.expectedPartTimeSalary.trim() !== "" &&
+          formData.expectedFullTimeSalary.trim() !== "" &&
+          formData.expectedLiveInSalary.trim() !== "" &&
+          formData.expectedDailySalary.trim() !== ""
         );
       case 5:
         return formData.photo !== null && formData.aadharFront !== null && formData.aadharBack !== null;
@@ -135,8 +163,14 @@ export default function Onboarding() {
     });
   };
 
-  const handleShiftSelect = (shiftId: string) => {
-    setFormData((prev) => ({ ...prev, preferredShiftType: shiftId }));
+  const handleShiftToggle = (shiftId: string) => {
+    setFormData((prev) => {
+      if (prev.preferredShiftType.includes(shiftId)) {
+        return { ...prev, preferredShiftType: prev.preferredShiftType.filter((id) => id !== shiftId) };
+      } else {
+        return { ...prev, preferredShiftType: [...prev.preferredShiftType, shiftId] };
+      }
+    });
   };
 
   const handleFileChange = (name: keyof FormDataState, file: File | null) => {
@@ -175,11 +209,11 @@ export default function Onboarding() {
       formDataToSubmit.append("state", formData.state);
       formDataToSubmit.append("pinCode", formData.pinCode);
       formDataToSubmit.append("servicesOffered", formData.servicesOffered.join(","));
-      formDataToSubmit.append("preferredShiftType", formData.preferredShiftType);
-      formDataToSubmit.append("expectedMonthlySalary", formData.expectedMonthlySalary);
+      formDataToSubmit.append("preferredShiftType", formData.preferredShiftType.join(","));
+      formDataToSubmit.append("expectedPartTimeSalary", formData.expectedPartTimeSalary);
+      formDataToSubmit.append("expectedFullTimeSalary", formData.expectedFullTimeSalary);
+      formDataToSubmit.append("expectedLiveInSalary", formData.expectedLiveInSalary);
       formDataToSubmit.append("expectedDailySalary", formData.expectedDailySalary);
-      formDataToSubmit.append("expectedHalfDaySalary", formData.expectedHalfDaySalary);
-      formDataToSubmit.append("expectedHourlySalary", formData.expectedHourlySalary);
 
       // Add files
       if (formData.photo) formDataToSubmit.append("photo", formData.photo);
@@ -243,7 +277,7 @@ export default function Onboarding() {
         return (
           <div className="space-y-6">
             <div>
-              <label className="block text-lg font-semibold mb-2">
+              <label className="block h4 mb-3">
                 <span className="text-text-primary">Full Name</span>
                 <span className="text-text-secondary ml-2">(पूरा नाम)</span>
               </label>
@@ -257,7 +291,7 @@ export default function Onboarding() {
               />
             </div>
             <div>
-              <label className="block text-lg font-semibold mb-2">
+              <label className="block h4 mb-3">
                 <span className="text-text-primary">Mobile Number</span>
                 <span className="text-text-secondary ml-2">(मोबाइल नंबर)</span>
               </label>
@@ -272,7 +306,7 @@ export default function Onboarding() {
               />
             </div>
             <div>
-              <label className="block text-lg font-semibold mb-2">
+              <label className="block h4 mb-3">
                 <span className="text-text-primary">Emergency Mobile Number</span>
                 <span className="text-text-secondary ml-2">(आपातकालीन मोबाइल नंबर)</span>
               </label>
@@ -292,7 +326,7 @@ export default function Onboarding() {
         return (
           <div className="space-y-6">
             <div>
-              <label className="block text-lg font-semibold mb-2">
+              <label className="block h4 mb-3">
                 <span className="text-text-primary">Address Line 1</span>
                 <span className="text-text-secondary ml-2">(पता पंक्ति 1)</span>
               </label>
@@ -306,7 +340,7 @@ export default function Onboarding() {
               />
             </div>
             <div>
-              <label className="block text-lg font-semibold mb-2">
+              <label className="block h4 mb-3">
                 <span className="text-text-primary">Address Line 2</span>
                 <span className="text-text-secondary ml-2">(पता पंक्ति 2 - वैकल्पिक)</span>
               </label>
@@ -320,7 +354,7 @@ export default function Onboarding() {
               />
             </div>
             <div>
-              <label className="block text-lg font-semibold mb-2">
+              <label className="block h4 mb-3">
                 <span className="text-text-primary">Address Line 3</span>
                 <span className="text-text-secondary ml-2">(पता पंक्ति 3 - वैकल्पिक)</span>
               </label>
@@ -334,7 +368,7 @@ export default function Onboarding() {
               />
             </div>
             <div>
-              <label className="block text-lg font-semibold mb-2">
+              <label className="block h4 mb-3">
                 <span className="text-text-primary">City</span>
                 <span className="text-text-secondary ml-2">(शहर)</span>
               </label>
@@ -348,7 +382,7 @@ export default function Onboarding() {
               />
             </div>
             <div>
-              <label className="block text-lg font-semibold mb-2">
+              <label className="block h4 mb-3">
                 <span className="text-text-primary">State</span>
                 <span className="text-text-secondary ml-2">(राज्य)</span>
               </label>
@@ -362,7 +396,7 @@ export default function Onboarding() {
               />
             </div>
             <div>
-              <label className="block text-lg font-semibold mb-2">
+              <label className="block h4 mb-3">
                 <span className="text-text-primary">Pin Code</span>
                 <span className="text-text-secondary ml-2">(पिन कोड)</span>
               </label>
@@ -382,7 +416,7 @@ export default function Onboarding() {
         return (
           <div className="space-y-8">
             <div>
-              <label className="block text-lg font-semibold mb-4">
+              <label className="block h4 mb-4">
                 <span className="text-text-primary">Services Offered</span>
                 <span className="text-text-secondary ml-2">(प्रदान की जाने वाली सेवाएं)</span>
               </label>
@@ -392,37 +426,47 @@ export default function Onboarding() {
                     key={service.id}
                     type="button"
                     onClick={() => handleServiceToggle(service.id)}
-                    className={`h-24 rounded-2xl border-2 flex flex-col items-center justify-center gap-2 transition-all ${
+                    className={`h-32 rounded-2xl border-2 flex flex-row items-center justify-between gap-3 transition-all p-4 ${
                       formData.servicesOffered.includes(service.id)
                         ? "border-primary bg-primary/10"
                         : "border-border bg-white"
                     }`}
                   >
-                    <Image src={service.icon} alt={service.label} width={40} height={40} className="object-contain" />
-                    <span className="font-semibold">{service.label}</span>
+                    <div className="flex flex-col items-start gap-1">
+                      <span className="font-semibold text-base">{service.label}</span>
+                      <span className="text-sm text-text-secondary">{service.hindi}</span>
+                    </div>
+                    <Image src={service.icon} alt={service.label} width={44} height={44} className="object-contain" />
                   </button>
                 ))}
               </div>
             </div>
             <div>
-              <label className="block text-lg font-semibold mb-4">
+              <label className="block h4 mb-4">
                 <span className="text-text-primary">Preferred Shift Type</span>
                 <span className="text-text-secondary ml-2">(पसंदीदा शिफ्ट प्रकार)</span>
               </label>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {SHIFTS.map((shift) => (
                   <button
                     key={shift.id}
                     type="button"
-                    onClick={() => handleShiftSelect(shift.id)}
-                    className={`h-24 rounded-2xl border-2 flex flex-col items-center justify-center gap-2 transition-all ${
-                      formData.preferredShiftType === shift.id
+                    onClick={() => handleShiftToggle(shift.id)}
+                    className={`h-auto rounded-2xl border-2 flex flex-row items-start justify-between gap-4 transition-all p-5 ${
+                      formData.preferredShiftType.includes(shift.id)
                         ? "border-primary bg-primary/10"
                         : "border-border bg-white"
                     }`}
                   >
-                    <Image src={shift.icon} alt={shift.label} width={40} height={40} className="object-contain" />
-                    <span className="font-semibold">{shift.label}</span>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <span className="font-semibold text-lg">{shift.label}</span>
+                        <span className="text-text-secondary text-base">({shift.hindi})</span>
+                      </div>
+                      <p className="body text-text-secondary mt-1">{shift.detail}</p>
+                      <p className="text-sm text-text-secondary">{shift.hindiDetail}</p>
+                    </div>
+                    <Image src={shift.icon} alt={shift.label} width={44} height={44} className="object-contain flex-shrink-0" />
                   </button>
                 ))}
               </div>
@@ -433,56 +477,56 @@ export default function Onboarding() {
         return (
           <div className="space-y-6">
             <div>
-              <label className="block text-lg font-semibold mb-2">
-                <span className="text-text-primary">Expected Monthly Salary (INR)</span>
-                <span className="text-text-secondary ml-2">(अपेक्षित मासिक वेतन)</span>
+              <label className="block h4 mb-3">
+                <span className="text-text-primary">Part Time Monthly Salary (INR)</span>
+                <span className="text-text-secondary ml-2">(अंशकालिक मासिक वेतन)</span>
               </label>
               <input
                 type="number"
-                name="expectedMonthlySalary"
-                value={formData.expectedMonthlySalary}
+                name="expectedPartTimeSalary"
+                value={formData.expectedPartTimeSalary}
                 onChange={handleTextChange}
                 className="form-input"
                 placeholder="Enter amount"
               />
             </div>
             <div>
-              <label className="block text-lg font-semibold mb-2">
-                <span className="text-text-primary">Expected Daily Salary (INR)</span>
-                <span className="text-text-secondary ml-2">(अपेक्षित दैनिक वेतन)</span>
+              <label className="block h4 mb-3">
+                <span className="text-text-primary">Full Time Monthly Salary (INR)</span>
+                <span className="text-text-secondary ml-2">(पूर्णकालिक मासिक वेतन)</span>
+              </label>
+              <input
+                type="number"
+                name="expectedFullTimeSalary"
+                value={formData.expectedFullTimeSalary}
+                onChange={handleTextChange}
+                className="form-input"
+                placeholder="Enter amount"
+              />
+            </div>
+            <div>
+              <label className="block h4 mb-3">
+                <span className="text-text-primary">Live In Monthly Salary (INR)</span>
+                <span className="text-text-secondary ml-2">(रहने वाला मासिक वेतन)</span>
+              </label>
+              <input
+                type="number"
+                name="expectedLiveInSalary"
+                value={formData.expectedLiveInSalary}
+                onChange={handleTextChange}
+                className="form-input"
+                placeholder="Enter amount"
+              />
+            </div>
+            <div>
+              <label className="block h4 mb-3">
+                <span className="text-text-primary">Daily Salary (INR)</span>
+                <span className="text-text-secondary ml-2">(दैनिक वेतन)</span>
               </label>
               <input
                 type="number"
                 name="expectedDailySalary"
                 value={formData.expectedDailySalary}
-                onChange={handleTextChange}
-                className="form-input"
-                placeholder="Enter amount"
-              />
-            </div>
-            <div>
-              <label className="block text-lg font-semibold mb-2">
-                <span className="text-text-primary">Expected Half-Day Salary (INR)</span>
-                <span className="text-text-secondary ml-2">(अपेक्षित आधे दिन का वेतन)</span>
-              </label>
-              <input
-                type="number"
-                name="expectedHalfDaySalary"
-                value={formData.expectedHalfDaySalary}
-                onChange={handleTextChange}
-                className="form-input"
-                placeholder="Enter amount"
-              />
-            </div>
-            <div>
-              <label className="block text-lg font-semibold mb-2">
-                <span className="text-text-primary">Expected Hourly Salary (INR)</span>
-                <span className="text-text-secondary ml-2">(अपेक्षित प्रति घंटा वेतन)</span>
-              </label>
-              <input
-                type="number"
-                name="expectedHourlySalary"
-                value={formData.expectedHourlySalary}
                 onChange={handleTextChange}
                 className="form-input"
                 placeholder="Enter amount"
@@ -501,20 +545,20 @@ export default function Onboarding() {
               { name: "panCard", label: "PAN Card (Optional)", hindi: "पैन कार्ड (वैकल्पिक)", accept: "image/*,.pdf", required: false },
             ].map((fileField) => (
               <div key={fileField.name}>
-                <label className="block text-lg font-semibold mb-2">
+                <label className="block h4 mb-3">
                   <span className="text-text-primary">{fileField.label}</span>
                   <span className="text-text-secondary ml-2">({fileField.hindi})</span>
                 </label>
                 {formData[fileField.name as keyof FormDataState] ? (
-                  <div className="flex items-center gap-3 p-4 bg-primary/10 border-2 border-primary rounded-2xl">
-                    <span className="text-2xl">✅</span>
-                    <span className="font-medium text-text-primary">
+                  <div className="flex items-center gap-3 p-5 bg-primary/10 border-2 border-primary rounded-2xl">
+                    <span className="text-3xl">✅</span>
+                    <span className="body font-medium text-text-primary">
                       {(formData[fileField.name as keyof FormDataState] as File).name}
                     </span>
                     <button
                       type="button"
                       onClick={() => handleFileChange(fileField.name as keyof FormDataState, null)}
-                      className="ml-auto text-red-600 font-semibold"
+                      className="ml-auto text-red-600 font-semibold text-lg"
                     >
                       Remove
                     </button>
@@ -534,9 +578,9 @@ export default function Onboarding() {
                         handleFileChange(fileField.name as keyof FormDataState, file);
                       }}
                     />
-                    <div className="border-2 border-dashed border-border rounded-2xl p-6 text-center cursor-pointer hover:border-primary transition-colors min-h-[48px]">
-                      <p className="text-lg font-medium text-text-primary">Click to choose a file or drag here</p>
-                      <p className="text-text-secondary mt-1">Size limit: 10 MB</p>
+                    <div className="border-2 border-dashed border-border rounded-2xl p-8 text-center cursor-pointer hover:border-primary transition-colors min-h-[48px]">
+                      <p className="body font-medium text-text-primary">Click to choose a file or drag here</p>
+                      <p className="text-sm text-text-secondary mt-2">Size limit: 10 MB</p>
                     </div>
                   </label>
                 )}
@@ -610,21 +654,26 @@ export default function Onboarding() {
 
         {/* Progress Bar */}
         <div className="mb-8">
-          <div className="flex justify-between items-center mb-2">
-            <span className="text-lg font-semibold text-text-primary">
+          <div className="flex justify-between items-center mb-4">
+            <span className="h4 text-text-primary">
               Step {currentStep} of {totalSteps}
+              <span className="text-text-secondary ml-2">({currentStep} कदम {totalSteps} में से)</span>
             </span>
             <button
               type="button"
               onClick={() => setShowTutorial(!showTutorial)}
               className="btn-outline"
             >
-              {showTutorial ? "Hide Tutorial" : "Tutorial"}
+              {showTutorial ? (
+                <span>Hide Tutorial <span className="text-text-secondary ml-2">(ट्यूटोरियल छिपाएं)</span></span>
+              ) : (
+                <span>Tutorial <span className="text-text-secondary ml-2">(ट्यूटोरियल)</span></span>
+              )}
             </button>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-3">
+          <div className="w-full bg-gray-200 rounded-full h-4">
             <div
-              className="bg-primary h-3 rounded-full transition-all duration-300"
+              className="bg-primary h-4 rounded-full transition-all duration-300"
               style={{ width: `${(currentStep / totalSteps) * 100}%` }}
             />
           </div>
@@ -660,7 +709,7 @@ export default function Onboarding() {
                 onClick={handleBack}
                 className="btn-outline flex-1"
               >
-                Back
+                Back <span className="text-text-secondary ml-2">(पीछे)</span>
               </button>
             )}
             {currentStep < totalSteps ? (
@@ -670,7 +719,7 @@ export default function Onboarding() {
                 disabled={!isStepValid(currentStep)}
                 className={`flex-1 ${isStepValid(currentStep) ? "btn-primary" : "btn-primary opacity-50 cursor-not-allowed"}`}
               >
-                Next
+                Next <span className="ml-2">(आगे)</span>
               </button>
             ) : (
               <button
@@ -679,7 +728,11 @@ export default function Onboarding() {
                 disabled={!isStepValid(currentStep) || isSubmitting}
                 className={`flex-1 ${isStepValid(currentStep) && !isSubmitting ? "btn-primary" : "btn-primary opacity-50 cursor-not-allowed"}`}
               >
-                {isSubmitting ? "Submitting..." : "Submit"}
+                {isSubmitting ? (
+                  <span>Submitting... <span className="ml-2">(सबमिट हो रहा है...)</span></span>
+                ) : (
+                  <span>Submit <span className="ml-2">(सबमिट करें)</span></span>
+                )}
               </button>
             )}
           </div>
