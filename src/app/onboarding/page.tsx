@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import ThankYouPopup from "@/components/shared/ThankYouPopup";
 
 // Define form data types
@@ -104,6 +105,7 @@ const SHIFTS = [
 ];
 
 export default function Onboarding() {
+  const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<FormDataState>(initialFormData);
   const [showTutorial, setShowTutorial] = useState(false);
@@ -427,23 +429,23 @@ export default function Onboarding() {
                 <span className="text-text-primary">Services Offered</span>
                 <span className="text-text-secondary ml-2">(प्रदान की जाने वाली सेवाएं)</span>
               </label>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {SERVICES.map((service) => (
                   <button
                     key={service.id}
                     type="button"
                     onClick={() => handleServiceToggle(service.id)}
-                    className={`h-32 rounded-2xl border-2 flex flex-row items-center justify-between gap-3 transition-all p-4 ${
+                    className={`h-auto rounded-2xl border-2 flex flex-col items-center justify-center gap-3 transition-all p-4 ${
                       formData.servicesOffered.includes(service.id)
                         ? "border-primary bg-primary/10"
                         : "border-border bg-white"
                     }`}
                   >
-                    <div className="flex flex-col items-start gap-1">
+                    <Image src={service.icon} alt={service.label} width={48} height={48} className="object-contain" />
+                    <div className="flex flex-col items-center gap-1 text-center">
                       <span className="font-semibold text-base">{service.label}</span>
                       <span className="text-sm text-text-secondary">{service.hindi}</span>
                     </div>
-                    <Image src={service.icon} alt={service.label} width={44} height={44} className="object-contain" />
                   </button>
                 ))}
               </div>
@@ -459,13 +461,14 @@ export default function Onboarding() {
                     key={shift.id}
                     type="button"
                     onClick={() => handleShiftToggle(shift.id)}
-                    className={`h-auto rounded-2xl border-2 flex flex-row items-start justify-between gap-4 transition-all p-5 ${
+                    className={`h-auto rounded-2xl border-2 flex flex-col items-start justify-between gap-4 transition-all p-5 ${
                       formData.preferredShiftType.includes(shift.id)
                         ? "border-primary bg-primary/10"
                         : "border-border bg-white"
                     }`}
                   >
-                    <div className="flex-1">
+                    <Image src={shift.icon} alt={shift.label} width={48} height={48} className="object-contain" />
+                    <div className="flex-1 w-full">
                       <div className="flex items-center gap-2">
                         <span className="font-semibold text-lg">{shift.label}</span>
                         <span className="text-text-secondary text-base">({shift.hindi})</span>
@@ -473,7 +476,6 @@ export default function Onboarding() {
                       <p className="body text-text-secondary mt-1">{shift.detail}</p>
                       <p className="text-sm text-text-secondary">{shift.hindiDetail}</p>
                     </div>
-                    <Image src={shift.icon} alt={shift.label} width={44} height={44} className="object-contain flex-shrink-0" />
                   </button>
                 ))}
               </div>
@@ -604,7 +606,10 @@ export default function Onboarding() {
     <>
       <ThankYouPopup
         isOpen={showThankYou}
-        onClose={() => setShowThankYou(false)}
+        onClose={() => {
+          setShowThankYou(false);
+          router.push("/");
+        }}
         title="Thank you! धन्यवाद!"
         message="Your onboarding form has been successfully submitted. Our team will contact you on WhatsApp within 24 hours. हमारी टीम 24 घंटे के भीतर आपको व्हाट्सएप पर संपर्क करेगी।"
         showAssistance={true}
