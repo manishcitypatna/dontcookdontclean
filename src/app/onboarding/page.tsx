@@ -1,6 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import ThankYouPopup from "@/components/shared/ThankYouPopup";
 
 // Define form data types
 type FormDataState = {
@@ -108,8 +109,14 @@ export default function Onboarding() {
   const [showTutorial, setShowTutorial] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState<"idle" | "success" | "error">("idle");
+  const [showThankYou, setShowThankYou] = useState(false);
 
   const totalSteps = 5;
+
+  // Scroll to top when step changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentStep]);
 
   // Validation helpers
   const validateMobile = (num: string) => /^\d{10}$/.test(num);
@@ -240,7 +247,7 @@ export default function Onboarding() {
       console.log("Response text:", responseText);
 
       if (response.ok) {
-        setSubmissionStatus("success");
+        setShowThankYou(true);
       } else {
         throw new Error(`Submission failed: ${response.status} ${response.statusText} - ${responseText}`);
       }
@@ -593,151 +600,144 @@ export default function Onboarding() {
     }
   };
 
-  // Success screen
-  if (submissionStatus === "success") {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-background pt-24 pb-12">
-        <div className="container max-w-md">
-          <div className="card text-center">
-            <div className="text-6xl mb-6">✅</div>
-            <h2 className="h3 mb-4">
-              <span className="text-text-primary">Thank you!</span>
-              <span className="text-text-secondary ml-2">धन्यवाद!</span>
-            </h2>
-            <p className="body mb-6 text-text-secondary">
-              Our team will contact you on WhatsApp within 24 hours.
-              <br />
-              हमारी टीम 24 घंटे के भीतर आपको व्हाट्सएप पर संपर्क करेगी।
-            </p>
-            <p className="text-xl font-semibold text-primary mb-6">
-              +91-88771-94682
-            </p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // Error screen
-  if (submissionStatus === "error") {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-background pt-24 pb-12">
-        <div className="container max-w-md">
-          <div className="card text-center">
-            <div className="text-6xl mb-6">❌</div>
-            <h2 className="h3 mb-4">
-              <span className="text-text-primary">Something went wrong</span>
-              <span className="text-text-secondary ml-2">कुछ गलत हो गया</span>
-            </h2>
-            <p className="body mb-6 text-text-secondary">
-              Please try again.
-              <br />
-              कृपया पुनः प्रयास करें।
-            </p>
-            <button onClick={() => setSubmissionStatus("idle")} className="btn-primary w-full">
-              Try Again
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen bg-background pt-24 pb-12">
-      <div className="container max-w-2xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="h2 text-text-primary mb-2">
-            Don&apos;t Cook Don&apos;t Clean Onboarding Form
-          </h1>
+    <>
+      <ThankYouPopup
+        isOpen={showThankYou}
+        onClose={() => setShowThankYou(false)}
+        title="Thank you! धन्यवाद!"
+        message="Your onboarding form has been successfully submitted. Our team will contact you on WhatsApp within 24 hours. हमारी टीम 24 घंटे के भीतर आपको व्हाट्सएप पर संपर्क करेगी।"
+        showAssistance={true}
+        showGuarantee={false}
+      >
+        <div className="mb-6 text-center">
+          <p className="text-xl font-semibold text-primary">
+            +91-88771-94682
+          </p>
         </div>
+      </ThankYouPopup>
 
-        {/* Progress Bar */}
-        <div className="mb-8">
-          <div className="flex justify-between items-center mb-4">
-            <span className="h4 text-text-primary">
-              Step {currentStep} of {totalSteps}
-              <span className="text-text-secondary ml-2">({currentStep} कदम {totalSteps} में से)</span>
-            </span>
-            <button
-              type="button"
-              onClick={() => setShowTutorial(!showTutorial)}
-              className="btn-outline"
-            >
-              {showTutorial ? (
-                <span>Hide Tutorial <span className="text-text-secondary ml-2">(ट्यूटोरियल छिपाएं)</span></span>
-              ) : (
-                <span>Tutorial <span className="text-text-secondary ml-2">(ट्यूटोरियल)</span></span>
-              )}
-            </button>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-4">
-            <div
-              className="bg-primary h-4 rounded-full transition-all duration-300"
-              style={{ width: `${(currentStep / totalSteps) * 100}%` }}
-            />
-          </div>
-        </div>
-
-        {/* Tutorial Video */}
-        {showTutorial && (
-          <div className="mb-8">
-            <video
-              src={`/videos/onboarding-step-${currentStep}.mp4`}
-              controls
-              muted
-              className="w-full rounded-2xl"
-            />
-          </div>
-        )}
-
-        {/* Form Card */}
-        <div className="card">
-          {/* Step Icon */}
-          <div className="text-center mb-6">
-            <Image src={getStepIcon()} alt={`Step ${currentStep}`} width={60} height={60} className="mx-auto object-contain" />
-          </div>
-
-          {/* Step Content */}
-          {renderStep()}
-
-          {/* Navigation Buttons */}
-          <div className="flex gap-4 mt-10">
-            {currentStep > 1 && (
-              <button
-                type="button"
-                onClick={handleBack}
-                className="btn-outline flex-1"
-              >
-                Back <span className="text-text-secondary ml-2">(पीछे)</span>
+      {/* Error screen */}
+      {submissionStatus === "error" && (
+        <div className="min-h-screen flex items-center justify-center bg-background pt-24 pb-12">
+          <div className="container max-w-md">
+            <div className="card text-center">
+              <div className="text-6xl mb-6">❌</div>
+              <h2 className="h3 mb-4">
+                <span className="text-text-primary">Something went wrong</span>
+                <span className="text-text-secondary ml-2">कुछ गलत हो गया</span>
+              </h2>
+              <p className="body mb-6 text-text-secondary">
+                Please try again.
+                <br />
+                कृपया पुनः प्रयास करें।
+              </p>
+              <button onClick={() => setSubmissionStatus("idle")} className="btn-primary w-full">
+                Try Again
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Main form */}
+      {submissionStatus === "idle" && (
+        <div className="min-h-screen bg-background pt-24 pb-12">
+          <div className="container max-w-2xl mx-auto">
+            <div className="text-center mb-8">
+              <h1 className="h2 text-text-primary mb-2">
+                Don&apos;t Cook Don&apos;t Clean Onboarding Form
+              </h1>
+            </div>
+
+            {/* Progress Bar */}
+            <div className="mb-8">
+              <div className="flex justify-between items-center mb-4">
+                <span className="h4 text-text-primary">
+                  Step {currentStep} of {totalSteps}
+                  <span className="text-text-secondary ml-2">({currentStep} कदम {totalSteps} में से)</span>
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setShowTutorial(!showTutorial)}
+                  className="btn-outline"
+                >
+                  {showTutorial ? (
+                    <span>Hide Tutorial <span className="text-text-secondary ml-2">(ट्यूटोरियल छिपाएं)</span></span>
+                  ) : (
+                    <span>Tutorial <span className="text-text-secondary ml-2">(ट्यूटोरियल)</span></span>
+                  )}
+                </button>
+              </div>
+              <div className="w-full bg-gray-200 rounded-full h-4">
+                <div
+                  className="bg-primary h-4 rounded-full transition-all duration-300"
+                  style={{ width: `${(currentStep / totalSteps) * 100}%` }}
+                />
+              </div>
+            </div>
+
+            {/* Tutorial Video */}
+            {showTutorial && (
+              <div className="mb-8">
+                <video
+                  src={`/videos/onboarding-step-${currentStep}.mp4`}
+                  controls
+                  muted
+                  className="w-full rounded-2xl"
+                />
+              </div>
             )}
-            {currentStep < totalSteps ? (
-              <button
-                type="button"
-                onClick={handleNext}
-                disabled={!isStepValid(currentStep)}
-                className={`flex-1 ${isStepValid(currentStep) ? "btn-primary" : "btn-primary opacity-50 cursor-not-allowed"}`}
-              >
-                Next <span className="ml-2">(आगे)</span>
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={handleSubmit}
-                disabled={!isStepValid(currentStep) || isSubmitting}
-                className={`flex-1 ${isStepValid(currentStep) && !isSubmitting ? "btn-primary" : "btn-primary opacity-50 cursor-not-allowed"}`}
-              >
-                {isSubmitting ? (
-                  <span>Submitting... <span className="ml-2">(सबमिट हो रहा है...)</span></span>
-                ) : (
-                  <span>Submit <span className="ml-2">(सबमिट करें)</span></span>
+
+            {/* Form Card */}
+            <div className="card">
+              {/* Step Icon */}
+              <div className="text-center mb-6">
+                <Image src={getStepIcon()} alt={`Step ${currentStep}`} width={60} height={60} className="mx-auto object-contain" />
+              </div>
+
+              {/* Step Content */}
+              {renderStep()}
+
+              {/* Navigation Buttons */}
+              <div className="flex gap-4 mt-10">
+                {currentStep > 1 && (
+                  <button
+                    type="button"
+                    onClick={handleBack}
+                    className="btn-outline flex-1"
+                  >
+                    Back <span className="text-text-secondary ml-2">(पीछे)</span>
+                  </button>
                 )}
-              </button>
-            )}
+                {currentStep < totalSteps ? (
+                  <button
+                    type="button"
+                    onClick={handleNext}
+                    disabled={!isStepValid(currentStep)}
+                    className={`flex-1 ${isStepValid(currentStep) ? "btn-primary" : "btn-primary opacity-50 cursor-not-allowed"}`}
+                  >
+                    Next <span className="ml-2">(आगे)</span>
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={handleSubmit}
+                    disabled={!isStepValid(currentStep) || isSubmitting}
+                    className={`flex-1 ${isStepValid(currentStep) && !isSubmitting ? "btn-primary" : "btn-primary opacity-50 cursor-not-allowed"}`}
+                  >
+                    {isSubmitting ? (
+                      <span>Submitting... <span className="ml-2">(सबमिट हो रहा है...)</span></span>
+                    ) : (
+                      <span>Submit <span className="ml-2">(सबमिट करें)</span></span>
+                    )}
+                  </button>
+                )}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
