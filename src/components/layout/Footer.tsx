@@ -2,16 +2,7 @@
 
 // src/components/FooterSection.tsx
 import Image from "next/image";
-import Script from "next/script";
 import Link from "next/link";
-
-declare global {
-  interface Window {
-    Tally?: {
-      loadEmbeds: () => void;
-    };
-  }
-}
 
 export default function FooterSection() {
   return (
@@ -71,16 +62,9 @@ export default function FooterSection() {
             </div>
 
             {/* CTA */}
-            <button 
-              data-tally-open="J9B0KR" 
-              data-tally-overlay="1" 
-              data-tally-emoji-animation="none" 
-              data-tally-auto-close="1000" 
-              data-tally-form-events-forwarding="1" 
-              className="btn-primary mt-8"
-            >
+            <Link href="/onboarding" className="btn-primary mt-8">
               Want to work with us?
-            </button>
+            </Link>
           </div>
 
           {/* Services */}
@@ -164,17 +148,6 @@ export default function FooterSection() {
           </div>
         </div>
       </div>
-
-      {/* Injecting the Tally Embed Loader asynchronously */}
-      <Script 
-        src="https://tally.so/widgets/embed.js" 
-        strategy="afterInteractive" 
-        onLoad={() => { 
-          if (typeof window !== 'undefined' && window.Tally) { 
-            window.Tally.loadEmbeds(); 
-          } 
-        }} 
-      />
     </footer>
   );
 }
