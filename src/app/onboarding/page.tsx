@@ -279,6 +279,24 @@ export default function Onboarding() {
     }
   };
 
+  // Tutorial videos
+  const getTutorialVideo = () => {
+    switch (currentStep) {
+      case 1:
+        return "https://res.cloudinary.com/dcvco8nlz/video/upload/v1782723314/step-01_vwve9o.mp4";
+      case 2:
+        return "https://res.cloudinary.com/dcvco8nlz/video/upload/v1782723298/step-02_qva5ww.mp4";
+      case 3:
+        return "https://res.cloudinary.com/dcvco8nlz/video/upload/v1782723314/step-03_iz0hj3.mp4";
+      case 4:
+        return "https://res.cloudinary.com/dcvco8nlz/video/upload/v1782723323/step-04_cmdasl.mp4";
+      case 5:
+        return "https://res.cloudinary.com/dcvco8nlz/video/upload/v1782723327/step-05_kkhxjg.mp4";
+      default:
+        return "";
+    }
+  };
+
   // Render steps
   const renderStep = () => {
     switch (currentStep) {
@@ -685,12 +703,14 @@ export default function Onboarding() {
             {/* Tutorial Video */}
             {showTutorial && (
               <div className="mb-8">
-                <video
-                  src={`/videos/onboarding-step-${currentStep}.mp4`}
-                  controls
-                  muted
-                  className="w-full rounded-2xl"
-                />
+                <div className="relative w-full max-w-xs mx-auto rounded-2xl overflow-hidden bg-black">
+                  <video
+                    src={getTutorialVideo()}
+                    controls
+                    muted
+                    className="w-full h-auto max-h-[70vh] object-contain"
+                  />
+                </div>
               </div>
             )}
 
