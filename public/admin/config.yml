@@ -12,7 +12,7 @@ local_backend: true
 media_folder: "public/blog-image"
 public_folder: "/blog-image"
 
-logo_url: "/images/nav-logo.avif"
+logo_url: "/images/shared/logo.avif"
 
 site_url: "https://dontcookdontclean.in"
 display_url: "https://dontcookdontclean.in"

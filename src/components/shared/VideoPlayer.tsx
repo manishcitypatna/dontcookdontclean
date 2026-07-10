@@ -25,12 +25,12 @@ export default function VideoPlayer() {
       muted
       loop
       playsInline
-      poster="/images/hero_poster.avif"
+      poster="/images/home/hero-poster.avif"
       aria-hidden="true"
       preload="metadata"
       className="absolute top-0 left-0 w-full h-full object-cover z-0"
     >
-      <source src="/images/hero_Video.mp4" type="video/mp4" />
+      <source src="/images/home/hero-video.mp4" type="video/mp4" />
       <track kind="captions" srcLang="en" label="English" default />
     </video>
   );

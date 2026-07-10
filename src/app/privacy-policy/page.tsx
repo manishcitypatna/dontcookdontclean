@@ -4,11 +4,14 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Privacy Policy | Don't Cook Don't Clean",
   description: "Read our privacy policy to understand how we collect, use, and protect your personal information when you use our services.",
+  alternates: {
+    canonical: "/privacy-policy",
+  },
 };
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className="pt-32 pb-20">
+    <main className="pb-20">
       {/* Hero Section */}
       <section className="relative py-16 md:py-24 bg-gradient-to-br from-primary/5 to-secondary/10">
         <div className="container">

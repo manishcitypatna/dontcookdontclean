@@ -1,0 +1,333 @@
+.pageWrap {
+  max-width: 896px;
+  margin: 0 auto;
+  padding: 32px 40px 0;
+}
+
+@media (max-width: 640px) {
+  .pageWrap {
+    padding: 24px 18px 0;
+  }
+}
+
+.docRoot {
+  --primary: #3ca200;
+  --primary-light: #eef7e6;
+  --text-main: #1f2937;
+  --text-muted: #4b5563;
+  --border: #e5e7eb;
+  --success: #10b981;
+  --success-bg: #ecfdf5;
+
+  font-family: var(--font-body), sans-serif;
+  color: var(--text-main);
+  line-height: 1.5;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+/* Header */
+.header {
+  background-color: var(--primary);
+  color: #ffffff;
+  padding: 22px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 4px solid #2d7d00;
+}
+
+.brandInfo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logoBadge {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+
+.logoBadge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.brandInfo h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.brandInfo p {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.brandContact {
+  text-align: right;
+  font-size: 13px;
+  opacity: 0.95;
+}
+
+/* Profile summary strip */
+.profileStrip {
+  background: var(--primary-light);
+  padding: 18px 28px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.workerTitle {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.workerPhoto {
+  flex-shrink: 0;
+  width: 96px;
+  height: 112px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #fafafa;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.workerPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.workerPhoto span {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 0 4px;
+}
+
+.workerTitle h2 {
+  margin: 0;
+  font-size: 28px;
+  font-family: var(--font-body), sans-serif;
+  color: var(--primary);
+}
+
+.idTag {
+  font-family: monospace;
+  font-size: 14px;
+  background: #dcf2cd;
+  color: #2d6a00;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 10px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.statusBadge {
+  background-color: var(--success-bg);
+  color: var(--success);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid #a7f3d0;
+}
+
+.metaInfo {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Content grid */
+.content {
+  padding: 24px 28px 28px;
+}
+
+.sectionTitle {
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--primary);
+  margin: 22px 0 12px 0;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--primary-light);
+  font-weight: 700;
+}
+
+.sectionTitle:first-child {
+  margin-top: 0;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.grid4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.mt15 {
+  margin-top: 10px;
+}
+
+.mt20 {
+  margin-top: 12px;
+}
+
+/* Data cards */
+.dataItem {
+  background: #fafafa;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.dataLabel {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.dataValue {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.dataValueSub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.highlight {
+  color: #b91c1c;
+}
+
+/* Pills */
+.pillContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.pill {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.pillYes {
+  background-color: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.pillNo {
+  background-color: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+/* Document links */
+.docCell {
+  text-align: center;
+}
+
+.docLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.docLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.docLink:hover {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.docLinkDisabled {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .grid2,
+  .grid3,
+  .grid4 {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+  .brandContact {
+    text-align: center;
+  }
+  .profileStrip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

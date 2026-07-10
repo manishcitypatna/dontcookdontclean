@@ -8,8 +8,8 @@ import { useMDXComponents } from "@/data/blog/mdx-components";
 import ArticleCTA from "@/components/blog/ArticleCTA";
 import Breadcrumbs from "@/components/blog/Breadcrumbs";
 import RelatedArticles from "@/components/blog/RelatedArticles";
-import FaqSection from "@/components/landing/FaqSection";
-import SupportSection from "@/components/landing/SupportSection";
+import FaqSection from "@/components/shared/FaqSection";
+import SupportSection from "@/components/shared/SupportSection";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -62,24 +62,29 @@ export async function generateMetadata({
   const blog = getBlogBySlug(slug);
   if (!blog) return {};
 
+  const title = blog.seo?.metaTitle ?? blog.title;
+  const description = blog.seo?.metaDescription ?? blog.description;
+  const canonicalUrl = blog.seo?.canonicalUrl ?? `https://dontcookdontclean.in/blog/${blog.slug}`;
+  const ogImage = blog.seo?.ogImage ?? blog.image;
+
   return {
-    title: blog.title,
-    description: blog.description,
+    title,
+    description,
     keywords: [blog.category, "home care", "cleaning tips"],
     alternates: {
-      canonical: `https://dontcookdontclean.in/blog/${blog.slug}`,
+      canonical: canonicalUrl,
     },
     openGraph: {
-      title: blog.title,
-      description: blog.description,
+      title,
+      description,
       url: `https://dontcookdontclean.in/blog/${blog.slug}`,
       type: "article",
       images: [
         {
-          url: `https://dontcookdontclean.in${blog.image}`,
+          url: `https://dontcookdontclean.in${ogImage}`,
           width: 1200,
           height: 630,
-          alt: blog.title,
+          alt: title,
         },
       ],
       publishedTime: blog.publishedAt,
@@ -87,8 +92,9 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: blog.title,
-      description: blog.description,
+      title,
+      description,
+      images: [`https://dontcookdontclean.in${ogImage}`],
     },
   };
 }
@@ -155,7 +161,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               name: "Don't Cook Don't Clean",
               logo: {
                 "@type": "ImageObject",
-                url: "https://dontcookdontclean.in/images/logo.avif",
+                url: "https://dontcookdontclean.in/images/shared/logo.avif",
                 width: 1200,
                 height: 630,
               },
@@ -245,7 +251,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                 <div className="bg-white rounded-2xl border border-border p-6 shadow-sm">
                   <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-border mb-4 bg-white">
                     <Image
-                      src="/images/nav-logo.avif"
+                      src="/images/shared/nav-logo.avif"
                       alt="Don't Cook Don't Clean"
                       width={64}
                       height={64}
@@ -264,7 +270,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                       className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
                     >
                       <Image 
-                        src="/images/icon/facebook.avif" 
+                        src="/images/shared/icon/facebook.avif" 
                         alt="Facebook" 
                         width={20} 
                         height={20} 
@@ -277,7 +283,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                       className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
                     >
                       <Image 
-                        src="/images/icon/instagram.avif" 
+                        src="/images/shared/icon/instagram.avif" 
                         alt="Instagram" 
                         width={20} 
                         height={20} 
@@ -290,7 +296,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                       className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
                     >
                       <Image 
-                        src="/images/icon/message.avif" 
+                        src="/images/shared/icon/message.avif" 
                         alt="WhatsApp" 
                         width={20} 
                         height={20} 

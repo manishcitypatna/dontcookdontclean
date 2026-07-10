@@ -1,45 +1,27 @@
+import Link from "next/link";
 import SectionLabel from "@/components/shared/SectionLabel";
-import Image from "next/image";
 
 export default function Process() {
-  const plans = [
-    {
-      title: "Part-Time Maid",
-      subtitle: "Flexible Household Assistance",
-      gradient: "linear-gradient(180deg, #f2d701 0%, #e9f6d4 100%)",
-    },
-    {
-      title: "Full-Time Maid",
-      subtitle: "Daily Household Support",
-      gradient: "linear-gradient(180deg, #f2d701 0%, #e9f6d4 100%)",
-    },
-    {
-      title: "Live-In Maid",
-      subtitle: "Dedicated Full-Time Help",
-      gradient: "linear-gradient(180deg, #f2d701 0%, #e9f6d4 100%)",
-    }
-  ];
-
   const steps = [
     {
       number: "1",
       title: "Tell Us Your Requirements",
       description: "Share your household needs, preferred schedule, and the type of assistance you're looking for.",
-      icon: "/images/requirements.avif",
+      icon: "/images/home/requirements.avif",
       align: "right"
     },
     {
       number: "2",
       title: "Get Matched with Helpers",
       description: "We'll recommend suitable verified maids based on your requirements.",
-      icon: "/images/matched.avif",
+      icon: "/images/home/matched.avif",
       align: "left"
     },
     {
       number: "3",
       title: "Start Receiving Support",
       description: "Choose your preferred helper and enjoy reliable household assistance with ongoing support from our team.",
-      icon: "/images/support.avif",
+      icon: "/images/home/support.avif",
       align: "right"
     }
   ];
@@ -49,65 +31,11 @@ export default function Process() {
       <div className="container">
         
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <SectionLabel>OUR PROCESS</SectionLabel>
           <h2 className="h2 text-text-primary">
-              What to Expect From Don&apos;t Cook Don&apos;t Clean
+              How It Works
             </h2>
-        </div>
-        
-        {/* Grid Container for top cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-24 items-stretch">
-          {plans.map((plan, idx) => (
-            <div key={idx} className="relative flex flex-col items-center">
-              
-              {/* Checkmark Circle Badge */}
-              <div className="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center border border-slate-100 absolute -top-4 left-1/2 -translate-x-1/2 z-20">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 16 16" fill="none">
-                  <path d="M13.3334 4L6.00002 11.3333L2.66669 8" stroke="#3ca200" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-              
-              {/* Box Element */}
-              <div 
-                className="w-full flex-1 flex flex-col justify-center items-center text-center py-10 px-8 relative"
-                style={{
-                  background: plan.gradient,
-                  borderRadius: "24px",
-                }}
-              >
-                {/* Header Subtitle text */}
-                <span className="body text-text-secondary mb-2 block">
-                  {plan.title}
-                </span>
-                
-                {/* Main Action Text */}
-                <h4 className="h4 text-text-primary max-w-[210px]">
-                  {plan.subtitle}
-                </h4>
-
-                {/* Bottom Notch Arrow Shape */}
-                <div 
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0"
-                  style={{
-                    borderLeft: "14px solid transparent",
-                    borderRight: "14px solid transparent",
-                    borderTop: "12px solid #e9f6d4",
-                    transform: "translate(-50%, 100%)",
-                    zIndex: "10"
-                  }}
-                />
-              </div>
-
-            </div>
-          ))}
-        </div>
-
-        {/* How It Works Header Section */}
-        <div className="text-center mb-12">
-          <h3 className="h3 text-text-primary">
-            How It Works
-          </h3>
         </div>
         
         {/* Step-by-Step Layout Tracks with Integrated Bottom CTA Button */}
@@ -144,7 +72,22 @@ export default function Process() {
                   {/* Icon Block with Sparkle Element */}
                   <div className="relative mb-4 flex-shrink-0">
                     <div className="bg-[#e9f6d4] p-5 rounded-[28px] inline-block">
-                      <Image src={step.icon} alt={step.title} width={48} height={48} className="w-12 h-12 object-contain" style={{ filter: 'brightness(0) saturate(100%) invert(37%) sepia(95%) saturate(1311%) hue-rotate(90deg) brightness(99%) contrast(101%)' }} />
+                      <span
+                        role="img"
+                        aria-label={step.title}
+                        className="block w-12 h-12"
+                        style={{
+                          backgroundColor: "var(--primary)",
+                          WebkitMaskImage: `url(${step.icon})`,
+                          maskImage: `url(${step.icon})`,
+                          WebkitMaskSize: "contain",
+                          maskSize: "contain",
+                          WebkitMaskRepeat: "no-repeat",
+                          maskRepeat: "no-repeat",
+                          WebkitMaskPosition: "center",
+                          maskPosition: "center",
+                        }}
+                      />
                     </div>
                     <div className="absolute -top-1 -right-1">
                       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 27 35">
@@ -170,9 +113,9 @@ export default function Process() {
 
           {/* Connected Bottom Call to Action Button inside the context timeline */}
           <div className="text-center mt-16 md:mt-24 relative z-20">
-            <button className="btn-primary">
+            <Link href="/workers" className="btn-primary">
               Hire a Maid
-            </button>
+            </Link>
           </div>
 
         </div>

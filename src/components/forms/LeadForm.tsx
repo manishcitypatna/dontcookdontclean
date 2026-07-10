@@ -3,31 +3,7 @@ import { useState } from "react";
 import ThankYouPopup from "@/components/shared/ThankYouPopup";
 import SearchableDropdown from "@/components/shared/SearchableDropdown";
 import { useRouter } from "next/navigation";
-
-const LOCALITY_OPTIONS = [
-  "Other",
-  "Ashiana Nagar",
-  "Bailey Road (Nehru Path)",
-  "Bhoothnath Road",
-  "Boring Road",
-  "Danapur",
-  "Digha",
-  "Exhibition Road",
-  "Fraser Road",
-  "Gola Road",
-  "Hanuman Nagar",
-  "Kadamkuan",
-  "Kankarbagh",
-  "Kidwaipuri",
-  "Nageshwar Colony",
-  "New Patliputra Colony",
-  "Patliputra Colony",
-  "Raja Bazar",
-  "Rajendra Nagar",
-  "Saguna More",
-  "Shastrinagar",
-  "Sri Krishna Puri (SK Puri)",
-];
+import { LOCALITY_OPTIONS } from "@/data/localities";
 
 const SERVICE_OPTIONS = [
   "Other",

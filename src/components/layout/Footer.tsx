@@ -3,8 +3,12 @@
 // src/components/FooterSection.tsx
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function FooterSection() {
+  const pathname = usePathname();
+  const isLandingPage = pathname === "/";
+
   return (
     <footer
       className="
@@ -14,13 +18,44 @@ export default function FooterSection() {
         overflow-hidden
       "
     >
-      <div className="container py-20 lg:py-24">
+      <div className="container pt-12 pb-12 lg:pt-16 lg:pb-16">
+        {/* Contact Bar */}
+        {isLandingPage && (
+          <div className="bg-white rounded-[24px] shadow-[0_10px_30px_rgba(0,0,0,0.08)] p-8 md:p-10 mb-16 lg:mb-20">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+              <div className="flex items-center gap-4">
+                <Image src="/images/shared/icon/calling.avif" alt="" width={28} height={28} className="h-7 w-7" />
+                <div>
+                  <p className="small-text text-text-secondary">Call or WhatsApp</p>
+                  <a href="tel:+918877194682" className="h4 text-text-primary hover:text-primary transition-colors">
+                    +91-88771-94682
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <Image src="/images/shared/icon/address.avif" alt="" width={28} height={28} className="h-7 w-7" />
+                <div>
+                  <p className="small-text text-text-secondary">Service Area</p>
+                  <p className="h4 text-text-primary">Patna, Bihar</p>
+                </div>
+              </div>
+
+              <div className="flex md:justify-end">
+                <a href="#lead-form" className="btn-primary w-full md:w-auto">
+                  Get Instant Quote
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14 lg:gap-20">
           {/* Brand */}
           <div className="flex flex-col items-start text-left">
             {/* Logo */}
             <Image
-              src="/images/logo.avif"
+              src="/images/shared/logo.avif"
               alt="Don't Cook Don't Clean"
               width={220}
               height={80}
@@ -41,30 +76,30 @@ export default function FooterSection() {
             {/* Contact */}
             <div className="mt-8 space-y-4">
               <div className="flex items-center gap-3 text-text-secondary">
-                <Image src="/images/icon/phone-call.avif" alt="Phone" width={24} height={24} className="h-6 w-6" />
+                <Image src="/images/shared/icon/phone-call.avif" alt="Phone" width={24} height={24} className="h-6 w-6" />
                 <span>+91-88771-94682</span>
               </div>
 
               <div className="flex items-center gap-3 text-text-secondary">
-                <Image src="/images/icon/mail.avif" alt="Email" width={24} height={24} className="h-6 w-6" />
+                <Image src="/images/shared/icon/mail.avif" alt="Email" width={24} height={24} className="h-6 w-6" />
                 <a href="mailto:info@dontcookdontclean.in" className="hover:text-primary transition-colors">info@dontcookdontclean.in</a>
               </div>
             </div>
 
             {/* Social Links */}
             <div className="mt-6 flex items-center gap-4">
+              <Link href="/work-with-us" className="btn-primary">
+                Work With Us
+              </Link>
               <a href="https://www.instagram.com/dontcook_dontclean" target="_blank" rel="noopener noreferrer">
-                <Image src="/images/icon/instagram.avif" alt="Instagram" width={28} height={28} className="h-7 w-7 hover:scale-110 transition-transform" />
+                <Image src="/images/shared/icon/instagram.avif" alt="Instagram" width={28} height={28} className="h-7 w-7 hover:scale-110 transition-transform" />
               </a>
               <a href="https://www.facebook.com/profile.php?id=61590679025518" target="_blank" rel="noopener noreferrer">
-                <Image src="/images/icon/facebook.avif" alt="Facebook" width={28} height={28} className="h-7 w-7 hover:scale-110 transition-transform" />
+                <Image src="/images/shared/icon/facebook.avif" alt="Facebook" width={28} height={28} className="h-7 w-7 hover:scale-110 transition-transform" />
               </a>
             </div>
 
-            {/* CTA */}
-            <Link href="/onboarding" className="btn-primary mt-8">
-              Want to work with us?
-            </Link>
+
           </div>
 
           {/* Services */}
@@ -111,7 +146,9 @@ export default function FooterSection() {
 
             <div className="space-y-6">
               <div>
-                <span className="text-text-secondary">Patna</span>
+                <Link href="/areas" className="text-text-secondary hover:text-primary transition-colors">
+                  Patna
+                </Link>
               </div>
 
               <div aria-hidden="true">

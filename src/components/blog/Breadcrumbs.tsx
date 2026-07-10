@@ -6,7 +6,7 @@ interface BreadcrumbsProps {
 
 export default function Breadcrumbs({ slug }: BreadcrumbsProps) {
   return (
-    <nav aria-label="Breadcrumb" className="pt-32 pb-8">
+    <nav aria-label="Breadcrumb" className="pt-8 pb-8">
       <div className="container">
         <ol className="flex flex-wrap items-center justify-center gap-2 text-sm text-text-secondary">
           <li>

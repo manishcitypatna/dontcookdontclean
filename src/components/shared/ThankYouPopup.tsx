@@ -73,18 +73,18 @@ export default function ThankYouPopup({
                     <p className="small-text text-text-secondary mb-4">Connect with our Patna operations team directly for priority booking:</p>
                     <div className="space-y-3">
                       <div className="flex items-center gap-3">
-                        <Image src="/images/icon/phone-call.avif" alt="Phone" width={28} height={28} className="h-7 w-7" />
+                        <Image src="/images/shared/icon/phone-call.avif" alt="Phone" width={28} height={28} className="h-7 w-7" />
                         <div>
                           <p className="font-semibold text-text-primary">Call / WhatsApp: +91-88771-94682</p>
                           <p className="small-text text-text-secondary">Available 9 AM - 8 PM</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
-                        <Image src="/images/icon/message.avif" alt="WhatsApp" width={28} height={28} className="h-7 w-7" />
+                        <Image src="/images/shared/icon/message.avif" alt="WhatsApp" width={28} height={28} className="h-7 w-7" />
                         <a href="#" className="font-semibold text-primary hover:underline">WhatsApp Chat: Click Here to Chat with Us</a>
                       </div>
                       <div className="flex items-center gap-3">
-                        <Image src="/images/icon/mail.avif" alt="Email" width={28} height={28} className="h-7 w-7" />
+                        <Image src="/images/shared/icon/mail.avif" alt="Email" width={28} height={28} className="h-7 w-7" />
                         <a href="mailto:info@dontcookdontclean.in" className="font-semibold text-primary hover:underline">Email Support: info@dontcookdontclean.in</a>
                       </div>
                     </div>

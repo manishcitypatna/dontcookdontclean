@@ -14,12 +14,12 @@ export default function Hero() {
       </div>
 
       {/* Lead Form Section - positioned to overlap 30% of video from bottom */}
-      <div className="relative z-10 w-full max-w-4xl mx-auto px-4 -mt-[30%] md:-mt-[30vh]">
+      <div id="lead-form" className="relative z-10 w-full max-w-4xl mx-auto px-4 -mt-[30%] md:-mt-[30vh]">
         <div className="bg-white/80 backdrop-blur-sm rounded-[24px] p-4 md:p-[30px_30px_25px] shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
           {/* Logo at top center */}
           <div className="w-full flex justify-center mb-3">
             <Image
-              src="/images/logo.avif"
+              src="/images/shared/logo.avif"
               alt="Don't Cook Don't Clean"
               width={160}
               height={64}

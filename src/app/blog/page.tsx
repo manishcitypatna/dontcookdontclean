@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllBlogs, getFeaturedBlogs } from "@/data/blog/blogUtils";
 import type { Metadata } from "next";
-import LeadForm from "@/components/forms/LeadForm";
 import SectionLabel from "@/components/shared/SectionLabel";
 import BlogCard from "@/components/blog/BlogCard";
 
@@ -31,7 +30,7 @@ export const metadata: Metadata = {
   }
 };
 
-export default function BlogIndex() {
+export default function BlogIndexPage() {
   const allBlogs = getAllBlogs();
   const featuredBlogs = getFeaturedBlogs().slice(0, 3);
 
@@ -41,7 +40,7 @@ export default function BlogIndex() {
       <section className="relative w-full" style={{ borderRadius: "0 0 32px 32px" }}>
         <div className="relative w-full aspect-[4/3] md:aspect-auto md:h-[80vh] overflow-hidden" style={{ borderRadius: "0 0 32px 32px" }}>
           <Image
-            src="/blog-image/blog-hero.avif"
+            src="/images/blog/blog-hero-bgimg.avif"
             alt="Domestic Help Resources"
             fill
             className="object-cover"
@@ -54,7 +53,7 @@ export default function BlogIndex() {
           <div className="bg-white/80 backdrop-blur-sm rounded-[24px] p-4 md:p-[30px_30px_25px] shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
             <div className="w-full flex justify-center mb-3">
               <Image
-                src="/images/logo.avif"
+                src="/images/shared/logo.avif"
                 alt="Don't Cook Don't Clean"
                 width={160}
                 height={64}
@@ -79,7 +78,6 @@ export default function BlogIndex() {
                 Browse Articles
               </Link>
             </div>
-            <LeadForm />
           </div>
         </div>
       </section>

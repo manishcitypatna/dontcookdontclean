@@ -33,6 +33,15 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# MCP server config — contains a live bearer token for the n8n MCP server
+.mcp.json
+
+# local scratch/working assets — source files for generated public/ assets
+# (e.g. OG image source) and one-off exports that sometimes contain real
+# worker PII (biodata previews with phone/address/bank details); never meant
+# to ship, so keep the whole folder out of git rather than curate file-by-file
+/buildResources/
+
 # vercel
 .vercel
 

@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Alkatra, Quicksand } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import SiteChrome from "@/components/layout/SiteChrome";
 
 // Configure Alkatra (for headings)
 const alkatra = Alkatra({
@@ -22,6 +21,7 @@ const quicksand = Quicksand({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://dontcookdontclean.in"),
   title: "Maid Service in Patna | Cook for Home & Cleaning Maid Services | Don't Cook Don't Clean",
   description: "Hire verified maids in Patna for cooking, cleaning, childcare & elder care. Flexible part-time, full-time & live-in plans. Background checked & ID verified helpers. Call +91-88771-94682.",
   keywords: [
@@ -57,6 +57,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Trusted Maid & Cook Services in Patna | Don't Cook Don't Clean",
     description: "Hire verified maids in Patna for cooking, cleaning, childcare & elder care.",
+    images: ["https://dontcookdontclean.in/og-image.jpg"],
   },
   icons: {
     icon: [
@@ -77,18 +78,6 @@ export default function RootLayout({
       className={`${alkatra.variable} ${quicksand.variable} h-full antialiased`}
     >
       <head>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-65TXQTKK7P"
-          strategy="afterInteractive"
-        />
-        <Script id="ga4-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-65TXQTKK7P');
-          `}
-        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -97,7 +86,7 @@ export default function RootLayout({
               "@type": "LocalBusiness",
               "name": "Don't Cook Don't Clean",
               "url": "https://dontcookdontclean.in",
-              "logo": "https://dontcookdontclean.in/images/logo.avif",
+              "logo": "https://dontcookdontclean.in/images/shared/logo.avif",
               "image": "https://dontcookdontclean.in/og-image.jpg",
               "description": "Don't Cook Don't Clean connects families in Patna with verified domestic helpers for cooking, cleaning, childcare, elder care, and household management.",
               "telephone": "+91-88771-94682",
@@ -138,70 +127,21 @@ export default function RootLayout({
             })
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "How do I hire a maid or domestic helper?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Simply submit your requirements through our website or contact our team. We'll help match you with a verified helper based on your household needs."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Are all helpers background verified?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. We perform identity verification and background checks before recommending helpers to families."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "What if the helper is not the right fit?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "We offer replacement assistance and work closely with families to find a more suitable match whenever required."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Can I hire helpers for part-time work?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. We provide both part-time and full-time domestic helper options depending on your requirements."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "What services can domestic helpers provide?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Services may include house cleaning, cooking, laundry, childcare assistance, elder care support, and other household tasks."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "How long does the hiring process take?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "The timeline varies based on availability and requirements, but most families receive suitable matches within a few days."
-                  }
-                }
-              ]
-            })
-          }}
-        />
       </head>
       <body className="min-h-full flex flex-col bg-background">
-        <Navbar />
-        {children}
-        <Footer />
+        <SiteChrome>{children}</SiteChrome>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-65TXQTKK7P"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-65TXQTKK7P');
+          `}
+        </Script>
       </body>
     </html>
   );

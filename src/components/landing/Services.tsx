@@ -1,6 +1,21 @@
 import SectionLabel from "@/components/shared/SectionLabel";
 import Image from "next/image";
 
+const ITEM_ICONS: Record<string, string> = {
+  "House Cleaning": "/images/shared/icon/cleaning.avif",
+  "Cooking Assistance": "/images/shared/icon/cooking.avif",
+  "Clothes Washing": "/images/shared/icon/laundry.avif",
+  "Kitchen Maintenance": "/images/shared/icon/dishes.avif",
+  "Babysitting Services": "/images/shared/icon/babysitting.avif",
+  "Child Supervision": "/images/shared/icon/family.avif",
+  "Elderly Assistance": "/images/shared/icon/elderly.avif",
+  "Companion Care": "/images/shared/icon/elderly.avif",
+  "Full-Time Maids": "/images/shared/icon/full-time.avif",
+  "Part-Time Maids": "/images/shared/icon/part-time.avif",
+  "Live-In Helpers": "/images/shared/icon/live-in.avif",
+  "Pet Walking": "/images/shared/icon/dog-walker.avif",
+};
+
 export default function Services() {
   const services = [
     {
@@ -13,7 +28,7 @@ export default function Services() {
         "Kitchen Maintenance"
       ],
       bg: "#FFFFFF",
-      icon: "/images/maid_service.avif"
+      icon: "/images/home/maid-service.avif"
     },
     {
       id: 2,
@@ -25,7 +40,7 @@ export default function Services() {
         "Companion Care"
       ],
       bg: "#FFFFFF",
-      icon: "/images/child_elder_care.avif"
+      icon: "/images/home/child-elder-care.avif"
     },
     {
       id: 3,
@@ -37,7 +52,7 @@ export default function Services() {
         "Pet Walking"
       ],
       bg: "#FFFFFF",
-      icon: "/images/specialized_assistance.avif"
+      icon: "/images/home/specialized-assistance.avif"
     }
   ]
 
@@ -56,13 +71,38 @@ export default function Services() {
               style={{ backgroundColor: service.bg }}
             >
               <div className="w-20 h-20 rounded-[24px] bg-[#e8f5d3] flex items-center justify-center mb-6">
-                <Image src={service.icon} alt={service.title} width={48} height={48} className="w-12 h-12 object-contain" style={{ filter: 'brightness(0) saturate(100%) invert(37%) sepia(95%) saturate(1311%) hue-rotate(90deg) brightness(99%) contrast(101%)' }} />
+                <span
+                  role="img"
+                  aria-label={service.title}
+                  className="block w-12 h-12"
+                  style={{
+                    backgroundColor: "var(--primary)",
+                    WebkitMaskImage: `url(${service.icon})`,
+                    maskImage: `url(${service.icon})`,
+                    WebkitMaskSize: "contain",
+                    maskSize: "contain",
+                    WebkitMaskRepeat: "no-repeat",
+                    maskRepeat: "no-repeat",
+                    WebkitMaskPosition: "center",
+                    maskPosition: "center",
+                  }}
+                />
               </div>
               <h4 className="h4 text-text-primary mb-4">{service.title}</h4>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {service.items.map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-2">
-                    <span className="text-primary text-lg">✓</span>
+                  <li key={idx} className="flex items-center gap-3">
+                    {ITEM_ICONS[item] ? (
+                      <Image
+                        src={ITEM_ICONS[item]}
+                        alt=""
+                        width={18}
+                        height={18}
+                        className="w-[18px] h-[18px] object-contain flex-shrink-0"
+                      />
+                    ) : (
+                      <span className="text-primary text-lg">✓</span>
+                    )}
                     <span className="body text-text-secondary">{item}</span>
                   </li>
                 ))}
@@ -89,9 +129,9 @@ export default function Services() {
                 <span className="body text-text-secondary">Secure online payments</span>
               </li>
             </ul>
-            <button className="btn-primary w-full">
+            <a href="#pricing" className="btn-primary w-full block text-center">
               Get Price
-            </button>
+            </a>
           </div>
         </div>
       </div>

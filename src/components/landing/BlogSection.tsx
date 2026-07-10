@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import type { BlogPost } from "@/data/blog/types";
@@ -11,33 +11,39 @@ interface BlogSectionProps {
 }
 
 export default function BlogSection({ blogs }: BlogSectionProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleCards, setVisibleCards] = useState(2);
-  const trackRef = useRef<HTMLDivElement>(null);
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
 
-  useEffect(() => {
-    const updateLayout = () => {
-      if (window.innerWidth < 768) {
-        setVisibleCards(1);
-      } else {
-        setVisibleCards(2);
-      }
-    };
-
-    updateLayout();
-    window.addEventListener("resize", updateLayout);
-
-    return () => window.removeEventListener("resize", updateLayout);
+  const updateEdges = useCallback(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const maxScroll = el.scrollWidth - el.clientWidth;
+    setAtStart(el.scrollLeft <= 4);
+    setAtEnd(el.scrollLeft >= maxScroll - 4);
   }, []);
 
-  const maxIndex = Math.max(0, blogs.length - visibleCards);
+  useEffect(() => {
+    updateEdges();
+    const el = scrollerRef.current;
+    if (!el) return;
+    el.addEventListener("scroll", updateEdges, { passive: true });
+    window.addEventListener("resize", updateEdges);
+    return () => {
+      el.removeEventListener("scroll", updateEdges);
+      window.removeEventListener("resize", updateEdges);
+    };
+  }, [updateEdges, blogs.length]);
 
-  const handlePrev = () => {
-    setCurrentIndex((prev) => Math.max(prev - 1, 0));
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
+  const scrollByCard = (direction: 1 | -1) => {
+    const el = scrollerRef.current;
+    const card = el?.firstElementChild as HTMLElement | null;
+    if (!el || !card) return;
+    const gap = 24; // gap-6
+    el.scrollBy({
+      left: direction * (card.getBoundingClientRect().width + gap),
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -59,37 +65,30 @@ export default function BlogSection({ blogs }: BlogSectionProps) {
 
           {/* Right Content */}
           <div className="lg:w-[72%]">
-            <div className="overflow-hidden pr-2">
-              <div
-                ref={trackRef}
-                className="flex gap-6 transition-transform duration-500 ease-out"
-                style={{
-                  transform: `translateX(-${
-                    currentIndex *
-                    (visibleCards === 2 ? 50 : 88)
-                  }%)`,
-                }}
-              >
-                {blogs.map((blog) => (
-                  <div
-                    key={blog.slug}
-                    className="
-                      shrink-0
-                      w-[88vw]
-                      md:w-[calc(50%-12px)]
-                    "
-                  >
-                    <BlogCard blog={blog} />
-                  </div>
-                ))}
-              </div>
+            <div
+              ref={scrollerRef}
+              className="flex gap-6 overflow-x-auto snap-x snap-mandatory hide-scrollbar overscroll-x-contain pr-2 pb-1"
+            >
+              {blogs.map((blog) => (
+                <div
+                  key={blog.slug}
+                  className="
+                    shrink-0
+                    snap-start
+                    w-[88vw]
+                    md:w-[calc(50%-12px)]
+                  "
+                >
+                  <BlogCard blog={blog} />
+                </div>
+              ))}
             </div>
 
             {/* Navigation */}
             <div className="flex justify-center gap-4 mt-10">
               <button
-                onClick={handlePrev}
-                disabled={currentIndex === 0}
+                onClick={() => scrollByCard(-1)}
+                disabled={atStart}
                 className="
                   w-12 h-12
                   rounded-full
@@ -117,8 +116,8 @@ export default function BlogSection({ blogs }: BlogSectionProps) {
               </button>
 
               <button
-                onClick={handleNext}
-                disabled={currentIndex >= maxIndex}
+                onClick={() => scrollByCard(1)}
+                disabled={atEnd}
                 className="
                   w-12 h-12
                   rounded-full
