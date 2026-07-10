@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Alkatra, Quicksand } from "next/font/google";
 import "./globals.css";
 import SiteChrome from "@/components/layout/SiteChrome";
@@ -142,6 +143,7 @@ export default function RootLayout({
             gtag('config', 'G-65TXQTKK7P');
           `}
         </Script>
+        <SpeedInsights />
       </body>
     </html>
   );
